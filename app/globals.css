@@ -5,10 +5,16 @@
   --foreground: #2A2A2A;
   --text-color: #111111;
   --accent-color: #a25925;
+  --white-border:#ffffff;
 }
 
 body {
   background: var(--background);
   color: var(--text-color);
   font-family: var(--font-host-grotesk);
+}
+
+.container {
+  width: 90% !important;
+  max-width: 1400px !important;
 }
