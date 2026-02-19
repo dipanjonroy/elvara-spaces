@@ -1,3 +1,4 @@
+import MainMenu from "../navigation/MainMenu"
 import Logo from "../ui/Logo"
 
 export default function Header() {
@@ -7,7 +8,7 @@ export default function Header() {
         <div className="w-full px-10 py-4 bg-white/15 backdrop-blur-2xl rounded-full border border-(--white-border)">
           <div className="w-full flex items-center justify-between">
             <Logo/>
-            <div>MainMenu</div>
+            <MainMenu/>
             <div>Button</div>
           </div>
         </div>
