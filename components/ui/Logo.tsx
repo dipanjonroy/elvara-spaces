@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Logo() {
   return (
-    <div className="w-20 md:w-24 xl:w-30 h-6 lg:h-10 transition-all duration-300">
+    <div className="w-20 md:w-24 xl:w-26 2xl:w-30 h-6 lg:h-10 transition-all duration-300">
       <Link href="/" className="relative block w-full h-full ">
         <Image
           loading="eager"
