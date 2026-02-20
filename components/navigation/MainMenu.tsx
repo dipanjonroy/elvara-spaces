@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function MainMenu() {
   return (
     <nav className="hidden lg:block">
-      <ul className="flex items-center gap-10 text-base xl:text-lg text-(--background) ">
+      <ul className="flex items-center gap-10 text-base 2xl:text-lg text-(--background) ">
         {menus.map((item) => (
           <span key={item.id} className="flex items-center -space-x-1 group">
             <span className="w-1.5 h-1.5 rounded-full bg-(--background) opacity-0 group-hover:opacity-100"/>
