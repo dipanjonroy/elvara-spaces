@@ -37,11 +37,15 @@ export default function MobileNavModal() {
       },
     );
 
-    tl.from(closeBtnRef.current, {
-      rotate: -45,
-      duration: 0.5,
-      ease: "power3.inOut",
-    },"-=0.1");
+    tl.from(
+      closeBtnRef.current,
+      {
+        rotate: -45,
+        duration: 0.5,
+        ease: "power3.inOut",
+      },
+      "-=0.1",
+    );
 
     if (menuRef.current) {
       const menus = gsap.utils.toArray(
@@ -56,7 +60,7 @@ export default function MobileNavModal() {
           duration: 0.4,
           stagger: 0.1,
         },
-        "-=0.3"
+        "-=0.3",
       );
     }
 
@@ -90,7 +94,10 @@ export default function MobileNavModal() {
   };
 
   return (
-    <div ref={modalRef} className="w-full h-screen bg-(--background) p-8">
+    <div
+      ref={modalRef}
+      className="w-full md:w-100 shrink-0 h-screen bg-(--background) p-8 shadow-md"
+    >
       <div className="w-full h-full">
         <div className="flex items-center justify-between pb-4 border-b border-(--black-border) mb-8">
           <Logo variant="black" />

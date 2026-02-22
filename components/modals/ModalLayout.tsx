@@ -6,8 +6,18 @@ import gsap from "gsap";
 import { useRef } from "react";
 
 export default function ModalLayout() {
-  const { isModalOpen, modal } = useModalStore();
+  const { isModalOpen, modal, align } = useModalStore();
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  let alignClass;
+
+  if(align === "center"){
+    alignClass = "flex items-center justify-center"
+  } else if(align === "right"){
+    alignClass ="md:flex md:items-end md:justify-end"
+  } else {
+    alignClass = "flex items-start justify-start"
+  }
 
   useGSAP(() => {
     if (!overlayRef.current) return;
@@ -37,7 +47,7 @@ export default function ModalLayout() {
       style={{ display: "none" }}
       className="fixed inset-0 bg-black/40 backdrop-blur-xs z-100"
     >
-      <div className="w-full h-full">
+      <div className={`w-full h-full ${alignClass}`}>
         <div>{modal}</div>
       </div>
     </div>
