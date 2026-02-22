@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 
 interface MainButtonProps {
@@ -12,7 +10,7 @@ export default function MainButton({ className, onClick }: MainButtonProps) {
     <button
       type="button"
       onClick={onClick}
-      className={`bg-(--foreground) p-2 rounded-full cursor-pointer ${className}`}
+      className={`bg-(--foreground) p-2 rounded-full cursor-pointer ${className} group`}
     >
       <div className="flex items-center justify-between gap-3 2xl:gap-10">
         <div className="flex items-center gap-3">
@@ -36,8 +34,15 @@ export default function MainButton({ className, onClick }: MainButtonProps) {
             </span>
           </div>
         </div>
-        <span className="text-sm text-(--text-color) bg-(--background) px-4 py-2 rounded-full block">
-          Book now
+
+        <span className="relative inline-flex items-center justify-center py-2 px-4 overflow-hidden rounded-full text-base text-(--text-color) bg-(--background)">
+          <span className="block transition-transform duration-300 ease-in-out group-hover:-translate-y-10">
+            Book now
+          </span>
+
+          <span className="absolute inset-0 flex items-center justify-center translate-y-10 transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+            Book now
+          </span>
         </span>
       </div>
     </button>

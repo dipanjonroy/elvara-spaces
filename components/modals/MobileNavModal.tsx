@@ -2,7 +2,7 @@
 
 import useClickOutside from "@/hooks/useClickOutside";
 import { useModalStore } from "@/store/ModalStore";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Logo from "../ui/Logo";
 import { MdOutlineClose } from "react-icons/md";
 import { useGSAP } from "@gsap/react";
