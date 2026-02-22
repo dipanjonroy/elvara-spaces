@@ -14,35 +14,75 @@ export default function MobileNavModal() {
   const { isModalOpen, modalId, closeModal } = useModalStore();
 
   const modalRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLUListElement>(null);
+  const btnRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(modalRef, closeModal);
 
   useGSAP(() => {
     if (!modalRef.current) return;
 
-    if (isModalOpen && modalId === "mobileMenu") {
-      gsap.fromTo(
-        modalRef.current,
-        { x: "100%", opacity: 0 },
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo(
+      modalRef.current,
+      { x: "100%", opacity: 0 },
+      {
+        x: "0%",
+        opacity: 1,
+        duration: 0.6,
+        delay: 0.2,
+        ease: "power3.inOut",
+      },
+    );
+
+    tl.from(closeBtnRef.current, {
+      rotate: -45,
+      duration: 0.5,
+      ease: "power3.inOut",
+    },"-=0.1");
+
+    if (menuRef.current) {
+      const menus = gsap.utils.toArray(
+        menuRef.current.children,
+      ) as HTMLElement[];
+
+      tl.from(
+        menus,
         {
-          x: "0%",
-          opacity: 1,
+          x: 50,
+          opacity: 0,
           duration: 0.4,
-          delay: 0.3,
-          ease: "power2.inOut",
+          stagger: 0.1,
         },
+        "-=0.3"
       );
+    }
+
+    if (btnRef.current) {
+      tl.from(btnRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 0.3,
+      });
+    }
+
+    if (isModalOpen && modalId === "mobileMenu") {
+      tl.play();
+    } else {
+      tl.reverse();
     }
   }, [isModalOpen, modalId]);
 
-  const handleClosModal = () => {
+  const handleCloseMenu = () => {
     if (!modalRef.current) return;
 
     gsap.to(modalRef.current, {
       x: "100%",
       opacity: 0,
       duration: 0.4,
-      ease: "power2.inOut",
+      ease: "power3.inOut",
       onComplete: () => {
         closeModal();
       },
@@ -56,17 +96,18 @@ export default function MobileNavModal() {
           <Logo variant="black" />
 
           <button
+            ref={closeBtnRef}
             type="button"
-            onClick={handleClosModal}
-            className="curso-pointer"
+            onClick={handleCloseMenu}
+            className="cursor-pointer"
           >
-            <MdOutlineClose className="text-(--text-color) text-2xl" />
+            <MdOutlineClose className="text-(--text-color) text-3xl" />
           </button>
         </div>
 
-        <MobileMenu />
+        <MobileMenu ref={menuRef} />
 
-        <div className="mt-20">
+        <div ref={btnRef} className="mt-20">
           <MainButton onClick={() => console.log("Main button clicked")} />
         </div>
       </div>
