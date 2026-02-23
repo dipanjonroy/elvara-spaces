@@ -1,7 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import SocialMedia from "../shared/SocialMedia";
 import Logo from "../ui/Logo";
 import { menus } from "@/lib/menus";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SERVICES = [
   { id: 1, name: "Residential", url: "#" },
@@ -13,6 +21,31 @@ const SERVICES = [
 ];
 
 export default function Footer() {
+  const largeTextRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const letters = gsap.utils.toArray(".letter");
+
+      gsap.fromTo(
+        letters,
+        { y: 50 },
+        {
+          y: 0,
+          duration: 0.8,
+          ease: "power3.inOut",
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: largeTextRef.current,
+            start: "top bottom",
+            end: "top 70%",
+            scrub: 1.8,
+          },
+        },
+      );
+    },
+    { scope: largeTextRef },
+  );
   return (
     <footer className="p-6">
       <div className="w-full h-full bg-(--foreground) rounded-4xl py-16">
@@ -73,12 +106,23 @@ export default function Footer() {
           </div>
 
           {/* Business name */}
-          <div className="flex items-center justify-center mt-14">
-            <span className="text-4xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[150px] font-bold">ELVARA-SPACES</span>
+          <div
+            ref={largeTextRef}
+            className="flex items-center justify-center mt-14"
+          >
+            <span className="text-4xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[150px] font-bold">
+              {"ELVARA-SPACES".split("").map((char, i) => (
+                <span key={i} className="letter inline-block">
+                  {char}
+                </span>
+              ))}
+            </span>
           </div>
-          
-          <div className="flex items-center justify-center mt-12">
-            <span className="inline-block text-sm center">&copy; Elvara-Spaces, All right reserved</span>
+
+          <div className="flex items-center justify-center mt-12 overflow-hidden">
+            <span className="inline-block text-sm center">
+              &copy; Elvara-Spaces, All right reserved
+            </span>
           </div>
         </div>
       </div>
