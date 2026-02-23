@@ -123,13 +123,13 @@ export default function HeroSection() {
                     className="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-semibold text-(--background) leading-tight"
                   >
                     {heroText.split(" ").map((word, i) => (
-                      <span key={i} className="word inline-block me-4">
+                      <span key={i} className="word inline-block me-2 lg:me-3">
                         {word}
                       </span>
                     ))}
                   </h1>
 
-                  <div ref={btnRef}>
+                  <div ref={btnRef} style={{ opacity: 0, y: 50 }}>
                     <PrimaryButton
                       onClick={() => console.log("Btn Clicked")}
                       name="Book Free Consultation"
@@ -139,7 +139,11 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                <div ref={customerRef} className="hidden flex-1 sm:flex items-end justify-end">
+                <div
+                  ref={customerRef}
+                  style={{ opacity: 0, y: 50 }}
+                  className="hidden flex-1 sm:flex items-end justify-end"
+                >
                   <HappyCustomers />
                 </div>
               </div>
