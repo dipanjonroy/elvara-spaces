@@ -19,7 +19,7 @@ export default function HappyCustomers() {
               src={item.img}
               alt="Happy customer image"
               fill
-              sizes="40px"
+              sizes="(min-width:1024px) 48px, 40px"
               className="object-cover"
             />
           </div>
