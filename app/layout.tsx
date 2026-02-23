@@ -3,6 +3,7 @@ import { Host_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import ModalLayout from "@/components/modals/ModalLayout";
+import Footer from "@/components/layout/Footer";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -26,8 +27,8 @@ export default function RootLayout({
       <body className={`${hostGrotesk.variable} antialiased`}>
         <Header />
         {children}
-
         <ModalLayout />
+        <Footer/>
       </body>
     </html>
   );

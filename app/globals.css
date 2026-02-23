@@ -1,12 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF8F5;
-  --foreground: #2A2A2A;
+  --background: #faf8f5;
+  --foreground: #2a2a2a;
   --text-color: #111111;
   --accent-color: #a25925;
-  --white-border:#ffffff62;
-  --black-border:#11111162;
+  --white-border: #ffffff62;
+  --black-border: #11111162;
+}
+
+@layer base {
+  h3 {
+    @apply font-bold text-lg lg:text-2xl
+  }
+  p {
+    @apply text-sm lg:text-base;
+  }
 }
 
 body {
