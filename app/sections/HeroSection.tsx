@@ -29,7 +29,7 @@ export default function HeroSection() {
         {
           clipPath: "inset(0% 0% 0% 0%)",
           duration: 1.2,
-          delay: 1,
+          delay: 0.6,
           ease: "power4.inout",
         },
       );
