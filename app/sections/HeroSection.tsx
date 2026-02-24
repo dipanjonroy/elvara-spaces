@@ -120,7 +120,7 @@ export default function HeroSection() {
                 <div className="w-full sm:w-2/3 xl:w-1/2 2xl:w-2/3">
                   <h1
                     ref={h1Ref}
-                    className="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-semibold text-(--background) leading-tight"
+                    className="text-4xl lg:text-5xl 2xl:text-6xl font-semibold text-(--background) leading-tight"
                   >
                     {heroText.split(" ").map((word, i) => (
                       <span key={i} className="word inline-block me-2 lg:me-3">

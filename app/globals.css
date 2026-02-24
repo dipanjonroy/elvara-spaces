@@ -10,8 +10,11 @@
 }
 
 @layer base {
+  h2 {
+    @apply text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight;
+  }
   h3 {
-    @apply font-bold text-lg lg:text-2xl
+    @apply font-bold text-lg lg:text-2xl;
   }
   p {
     @apply text-sm lg:text-base;
@@ -27,4 +30,17 @@ body {
 .container {
   width: 90% !important;
   max-width: 1400px !important;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
 }

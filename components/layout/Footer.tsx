@@ -47,7 +47,7 @@ export default function Footer() {
     { scope: largeTextRef },
   );
   return (
-    <footer className="p-6">
+    <footer className="lg:px-6 lg:pb-6">
       <div className="w-full h-full bg-(--foreground) rounded-4xl py-16">
         <div className="container mx-auto text-(--background)">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
