@@ -63,7 +63,7 @@ export default function Footer() {
 
             {/* Navigation */}
             <div className="space-y-7">
-              <h3>Pages</h3>
+              <h4>Pages</h4>
               <div className="text-sm lg:text-base inline-flex flex-col space-y-3">
                 {menus.map((item) => (
                   <Link
@@ -79,7 +79,7 @@ export default function Footer() {
 
             {/* Utility Pages */}
             <div className="space-y-7">
-              <h3>Our Services</h3>
+              <h4>Our Services</h4>
               <div className="text-sm lg:text-base inline-flex flex-col space-y-3">
                 {SERVICES.map((item) => (
                   <Link
@@ -95,7 +95,7 @@ export default function Footer() {
 
             {/* Addresses */}
             <div className="space-y-7">
-              <h3>Our Services</h3>
+              <h4>Addresses</h4>
               <div className="text-sm lg:text-base  inline-flex flex-col space-y-3">
                 <span>info@elvaraspaces.com</span>
                 <span>(555) 345-6789</span>
