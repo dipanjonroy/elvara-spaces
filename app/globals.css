@@ -14,6 +14,10 @@
     @apply text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight;
   }
   h3 {
+    @apply font-bold text-xl lg:text-3xl;
+  }
+  
+  h4 {
     @apply font-bold text-lg lg:text-2xl;
   }
   p {
