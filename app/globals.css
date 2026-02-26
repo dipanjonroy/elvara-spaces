@@ -16,7 +16,7 @@
   h3 {
     @apply font-bold text-xl lg:text-3xl;
   }
-  
+
   h4 {
     @apply font-bold text-lg lg:text-2xl;
   }
@@ -26,6 +26,7 @@
 }
 
 body {
+  scroll-behavior: smooth;
   background: var(--background);
   color: var(--text-color);
   font-family: var(--font-host-grotesk);

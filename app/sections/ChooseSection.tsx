@@ -1,3 +1,4 @@
+import EntryBottom from "@/components/animation/EntryBottom";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { whyUs } from "@/lib/whyUs";
 
@@ -12,12 +13,14 @@ export default function ChooseSection() {
                 badge="Why us"
                 title="Why Clients Trust Us With Their Spaces"
               />
-              <p className="mt-6">
+              <EntryBottom>
+                <p className="mt-6">
                 We combine expert design, meticulous execution, and personalized
                 solutions for every project. From homes to offices, kitchens to
                 full renovations, our clients experience lasting quality and
                 seamless transformations.
               </p>
+              </EntryBottom>
             </div>
           </div>
 

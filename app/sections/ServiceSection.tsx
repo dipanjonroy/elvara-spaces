@@ -5,11 +5,17 @@ import { services } from "@/lib/services";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import EntryBottom from "@/components/animation/EntryBottom";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ServiceSection() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [prevActiveIndex, setPrevActiveIndex] = useState<number | null>(null);
 
+  const btnWrapperRef = useRef<HTMLDivElement>(null);
+  const imageWrapperRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
@@ -20,6 +26,53 @@ export default function ServiceSection() {
     setActiveIndex(i);
   };
 
+  // Btns Animation
+  useEffect(() => {
+    if (!btnWrapperRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const btns = gsap.utils.toArray<HTMLButtonElement>(
+        btnWrapperRef.current!.children,
+      );
+
+      btns.forEach((btn) => {
+        gsap.from(btn, {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: btn,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Image enter animation
+  useEffect(() => {
+    if (!imageWrapperRef.current) return;
+
+    const firstImage = imageWrapperRef.current!.children[0];
+
+    gsap.from(firstImage, {
+      scale: 1.2,
+      opacity: 0,
+      duration: 1.5,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: firstImage,
+        start: "top 90%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, []);
+
+  // Image change animation
   useEffect(() => {
     if (prevActiveIndex === null) return;
 
@@ -94,7 +147,10 @@ export default function ServiceSection() {
             />
           </div>
           <div className="flex flex-col lg:flex-row gap-20 mt-14 lg:mt-24">
-            <div className="w-full flex flex-col gap-6 lg:gap-8">
+            <div
+              ref={btnWrapperRef}
+              className="w-full flex flex-col gap-6 lg:gap-8"
+            >
               {services.map((item, i) => {
                 const isActive = activeIndex === i;
                 return (
@@ -104,7 +160,9 @@ export default function ServiceSection() {
                     className="text-left pb-6 lg:pb-8 border-b cursor-pointer"
                   >
                     <span className="flex items-center justify-between">
-                      <span className={`text-xl lg:text-2xl transition-all duration-400 ${isActive ? "font-bold":"font-normal"}`}>
+                      <span
+                        className={`text-xl lg:text-2xl transition-all duration-400 ${isActive ? "font-bold" : "font-normal"}`}
+                      >
                         {item.name}
                       </span>
                       <Image
@@ -121,7 +179,7 @@ export default function ServiceSection() {
             </div>
 
             {/* Services Info */}
-            <div className="w-full h-auto">
+            <div ref={imageWrapperRef} className="w-full h-auto">
               <div
                 ref={imageRef}
                 className="w-full h-70 md:h-80 lg:h-100 xl:h-120 relative rounded-3xl overflow-hidden"
@@ -149,15 +207,19 @@ export default function ServiceSection() {
                 </div>
               </div>
 
-              <div ref={textRef} className="relative w-full mt-5 min-h-15">
-                {prevActiveIndex !== null && (
-                  <p className="absolute inset-0">
-                    {services[prevActiveIndex].desc}
-                  </p>
-                )}
+              <EntryBottom>
+                <div ref={textRef} className="relative w-full mt-5 min-h-15">
+                  {prevActiveIndex !== null && (
+                    <p className="absolute inset-0">
+                      {services[prevActiveIndex].desc}
+                    </p>
+                  )}
 
-                <p className="absolute inset-0">{services[activeIndex].desc}</p>
-              </div>
+                  <p className="absolute inset-0">
+                    {services[activeIndex].desc}
+                  </p>
+                </div>
+              </EntryBottom>
             </div>
           </div>
         </div>
