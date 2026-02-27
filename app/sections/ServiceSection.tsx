@@ -62,11 +62,11 @@ export default function ServiceSection() {
     gsap.from(firstImage, {
       scale: 1.2,
       opacity: 0,
-      duration: 1.5,
+      duration: 3,
       ease: "expo.out",
       scrollTrigger: {
         trigger: firstImage,
-        start: "top 90%",
+        start: "top 80%",
         toggleActions: "play none none none",
       },
     });

@@ -1,8 +1,48 @@
+"use client";
+
 import EntryBottom from "@/components/animation/EntryBottom";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { whyUs } from "@/lib/whyUs";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ChooseSection() {
+  const itemCardRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const cards = gsap.utils.toArray<HTMLDivElement>(
+      itemCardRef.current!.children,
+    );
+
+    cards.forEach((card) => {
+      gsap.fromTo(
+        card,
+        {
+          y: 30,
+          opacity: 0,
+          scale: 0.8,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            end: "bottom top",
+            toggleActions: "play reverse play reverse",
+          },
+        },
+      );
+    });
+  }, []);
+
   return (
     <section className="py-20">
       <div className="container mx-auto">
@@ -15,17 +55,17 @@ export default function ChooseSection() {
               />
               <EntryBottom>
                 <p className="mt-6">
-                We combine expert design, meticulous execution, and personalized
-                solutions for every project. From homes to offices, kitchens to
-                full renovations, our clients experience lasting quality and
-                seamless transformations.
-              </p>
+                  We combine expert design, meticulous execution, and
+                  personalized solutions for every project. From homes to
+                  offices, kitchens to full renovations, our clients experience
+                  lasting quality and seamless transformations.
+                </p>
               </EntryBottom>
             </div>
           </div>
 
           <div className="w-full">
-            <div className="space-y-14 lg:space-y-20">
+            <div ref={itemCardRef} className="space-y-14 lg:space-y-20">
               {whyUs.map((item) => {
                 const Icon = item.icon;
                 return (
