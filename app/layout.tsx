@@ -26,8 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${hostGrotesk.variable} antialiased`}>
+        <Header />
         <SmoothProvider>
-          <Header />
           {children}
           <ModalLayout />
           <Footer />
