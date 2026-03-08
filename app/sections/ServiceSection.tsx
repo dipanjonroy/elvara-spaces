@@ -1,6 +1,6 @@
 "use client";
 
-import SectionHeader from "@/components/ui/SectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { services } from "@/lib/services";
 import gsap from "gsap";
 import Image from "next/image";

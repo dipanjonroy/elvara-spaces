@@ -42,7 +42,7 @@ export default function EntryBottom({ children, delay }: EntryBottomProps) {
   }, []);
 
   return (
-    <div ref={animRef} className="w-full h-full">
+    <div ref={animRef} className="w-full">
       {children}
     </div>
   );

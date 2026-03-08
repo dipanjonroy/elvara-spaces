@@ -1,7 +1,7 @@
 "use client";
 
 import EntryBottom from "@/components/animation/EntryBottom";
-import SectionHeader from "@/components/ui/SectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { whyUs } from "@/lib/whyUs";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
@@ -11,7 +11,19 @@ import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ChooseSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const itemCardRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 25%",
+      end: "bottom bottom",
+      pin: stickyRef.current,
+      pinSpacing: false,
+    });
+  });
 
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLDivElement>(
@@ -44,11 +56,11 @@ export default function ChooseSection() {
   }, []);
 
   return (
-    <section className="py-20">
+    <section ref={sectionRef} className="py-20">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-22 xl:gap-40">
           <div className="relative">
-            <div className="lg:sticky lg:top-[30%]">
+            <div ref={stickyRef}>
               <SectionHeader
                 badge="Why us"
                 title="Why Clients Trust Us With Their Spaces"

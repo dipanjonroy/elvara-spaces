@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import ModalLayout from "@/components/modals/ModalLayout";
 import Footer from "@/components/layout/Footer";
+import SmoothProvider from "@/components/animation/SmoothProvider";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -25,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${hostGrotesk.variable} antialiased`}>
-        <Header />
-        {children}
-        <ModalLayout />
-        <Footer/>
+        <SmoothProvider>
+          <Header />
+          {children}
+          <ModalLayout />
+          <Footer />
+        </SmoothProvider>
       </body>
     </html>
   );

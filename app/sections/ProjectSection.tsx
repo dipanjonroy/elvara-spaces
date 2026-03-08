@@ -1,7 +1,7 @@
 "use client";
 
 import LinkButton from "@/components/ui/LinkButton";
-import SectionHeader from "@/components/ui/SectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { projects } from "@/lib/projects";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
