@@ -10,9 +10,14 @@ gsap.registerPlugin(ScrollTrigger);
 interface EntryBottomProps {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
 }
 
-export default function EntryBottom({ children, delay }: EntryBottomProps) {
+export default function EntryBottom({
+  children,
+  delay,
+  className,
+}: EntryBottomProps) {
   const animRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -42,7 +47,7 @@ export default function EntryBottom({ children, delay }: EntryBottomProps) {
   }, []);
 
   return (
-    <div ref={animRef} className="w-full">
+    <div ref={animRef} className={`w-full ${className}`}>
       {children}
     </div>
   );

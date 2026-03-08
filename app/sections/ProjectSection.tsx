@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import EntryBottom from "@/components/animation/EntryBottom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +27,7 @@ export default function ProjectSection() {
         ease: "none",
         scrollTrigger: {
           trigger: item,
-          start: "top 23%",
+          start: "top 22%",
           endTrigger: contentRef.current,
           scrub: true,
           pin: item,
@@ -49,19 +50,21 @@ export default function ProjectSection() {
               align="center"
             />
 
-            <p className="text-center w-full max-w-200">
-              Every project we take on reflects thoughtful design, quality
-              execution, and attention to detail.
-            </p>
+            <EntryBottom className="flex items-center justify-center">
+              <p className="text-center w-full max-w-200">
+                Every project we take on reflects thoughtful design, quality
+                execution, and attention to detail.
+              </p>
+            </EntryBottom>
 
-            <div className="mt-3">
+            <EntryBottom className="mt-4 flex items-center justify-center">
               <LinkButton
                 name="View all projects"
                 path="#"
                 className="bg-(--foreground) text-(--background)"
                 iconClass="bg-(--background) text-(--text-color)"
               />
-            </div>
+            </EntryBottom>
           </div>
 
           {/* Projects */}
