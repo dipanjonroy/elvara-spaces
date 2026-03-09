@@ -1,5 +1,6 @@
 "use client";
 
+import EntryBottom from "@/components/animation/EntryBottom";
 import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 import { useState } from "react";
@@ -28,8 +29,21 @@ export default function BeforeAfterSection() {
   return (
     <section className="pb-20">
       <div className="container mx-auto">
-        <div className="flex flex-col items-center justify-center">
-          <SectionHeader title="From Outdated to Outstanding" align="center" />
+        <div className="flex items-center justify-center gap-20">
+          <div className="w-full max-w-120">
+            <SectionHeader
+              badge="Transformation"
+              title="From Outdated to Outstanding"
+            />
+            <EntryBottom>
+              <p className="mt-6">
+                We combine expert design, meticulous execution, and personalized
+                solutions for every project. From homes to offices, kitchens to
+                full renovations, our clients experience lasting quality and
+                seamless transformations.
+              </p>
+            </EntryBottom>
+          </div>
 
           <div
             onMouseDown={handleMouseDown}
