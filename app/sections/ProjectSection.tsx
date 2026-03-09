@@ -85,7 +85,8 @@ export default function ProjectSection() {
               <div className="absolute inset-x-6 md:inset-x-20 bottom-6 md:bottom-20">
                 <div className="w-full md:w-max p-10 bg-black/30 backdrop-blur-sm rounded-2xl text-white">
                   <span className="text-sm">{item.category}</span>
-                  <h3>{item.title}</h3>
+                  <h3 className="mt-4">{item.title}</h3>
+                  <span className="font-light text-sm opacity-70">{item.location}</span>
                 </div>
               </div>
             </div>
