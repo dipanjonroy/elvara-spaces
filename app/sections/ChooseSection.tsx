@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,14 +16,18 @@ export default function ChooseSection() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const itemCardRef = useRef<HTMLDivElement>(null);
 
+  const windowWidth = useWindowWidth();
+
   useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top 25%",
-      end: "bottom bottom",
-      pin: stickyRef.current,
-      pinSpacing: false,
-    });
+    if (windowWidth >= 1024) {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 25%",
+        end: "bottom bottom",
+        pin: stickyRef.current,
+        pinSpacing: false,
+      });
+    }
   });
 
   useGSAP(() => {
