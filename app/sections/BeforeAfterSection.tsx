@@ -47,6 +47,7 @@ export default function BeforeAfterSection() {
                 priority
                 className="object-cover"
                 sizes="(max-width: 600px) 100vw, 1000px"
+                draggable={false}
               />
 
               <div
@@ -60,6 +61,7 @@ export default function BeforeAfterSection() {
                   priority
                   className="object-cover"
                   sizes="(max-width: 600px) 100vw, 1000px"
+                  draggable={false}
                 />
               </div>
 
