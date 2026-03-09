@@ -1,3 +1,4 @@
+import BeforeAfterSection from "./sections/BeforeAfterSection";
 import BrandSection from "./sections/BrandSection";
 import ChooseSection from "./sections/ChooseSection";
 import HeroSection from "./sections/HeroSection";
@@ -12,6 +13,7 @@ export default function Home() {
       <ServiceSection />
       <ChooseSection />
       <ProjectSection />
+      <BeforeAfterSection />
     </>
   );
 }
