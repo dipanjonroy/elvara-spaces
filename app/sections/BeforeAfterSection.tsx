@@ -29,7 +29,7 @@ export default function BeforeAfterSection() {
   return (
     <section className="pb-20">
       <div className="container mx-auto">
-        <div className="flex items-center justify-center gap-20">
+        <div className="flex flex-col xl:flex-row xl:items-center justify-center gap-5 xl:gap-20">
           <div className="w-full max-w-120">
             <SectionHeader
               badge="Transformation"
@@ -52,7 +52,7 @@ export default function BeforeAfterSection() {
           >
             <div
               onMouseMove={handleMove}
-              className="relative w-full max-w-250 aspect-video overflow-hidden m-auto rounded-3xl select-none"
+              className="relative w-full xl:max-w-250 aspect-video overflow-hidden m-auto rounded-3xl select-none"
             >
               <Image
                 src="/After.jpg"
