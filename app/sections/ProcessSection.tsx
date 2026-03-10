@@ -13,29 +13,54 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ProcessSection() {
   const processRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const processCards = gsap.utils.toArray<HTMLElement>(
-        processRef.current!.children,
-      );
+  useGSAP(() => {
+    if (!processRef.current) return;
 
-      gsap.from(processCards, {
-        y: 150,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: {
-          each: 0.2,
-          from: "start",
-        },
+    const mm = gsap.matchMedia();
+
+    const cards = gsap.utils.toArray<HTMLElement>(processRef.current!.children);
+
+    mm.add("(min-width: 640px)", () => {
+      gsap.set(cards, {
+        opacity: 0,
+        y: 100,
+        scale: 0.92,
+      });
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: processRef.current,
-          start: "top 90%",
-          toggleActions: "play none none reverse",
+          start: "top 80%",
+          end: "+=500",
+          scrub: 1.2,
         },
       });
-    },
-    { scope: processRef },
-  );
+
+      tl.to(cards, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.35,
+        ease: "power2.out",
+      });
+    });
+
+    mm.add("(max-width:639px)", () => {
+      cards.forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 100,
+          scale: 0.92,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    });
+  });
 
   return (
     <section className="py-20">
@@ -66,13 +91,13 @@ export default function ProcessSection() {
               return (
                 <div
                   key={item.id}
-                  className="bg-(--foreground)/90 h-70 lg:h-80 xl:h-90 rounded-3xl p-8"
+                  className="process-card bg-(--foreground)/90 h-70 lg:h-80 xl:h-105 2xl:h-90 rounded-3xl p-8"
                 >
                   <div className="w-full h-full flex flex-col items-center justify-start space-y-3">
                     <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-(--foreground) flex items-center justify-center text-(--background) text-3xl">
                       <Icon />
                     </div>
-                    <h3 className="text-(--background) font-semibold">
+                    <h3 className="text-(--background) text-center font-semibold">
                       {item.title}
                     </h3>
                     <p className="text-(--background)/75 text-center">
