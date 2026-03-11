@@ -80,6 +80,7 @@ export default function ProjectSection() {
                   fill
                   className="object-cover"
                   sizes="(min-width:1536px) 1040px,(min-width:1024px) 880px, 100vw"
+                  loading="eager"
                 />
               </div>
 
