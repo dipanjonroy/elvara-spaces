@@ -1,8 +1,6 @@
 import EntryBottom from "@/components/animation/EntryBottom";
-import ReviewCard from "@/components/shared/ReviewCard";
 import ReviewSlider from "@/components/shared/ReviewSlider";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { reviewsData } from "@/lib/reviews";
 
 export default function ReviewsSection() {
   return (
