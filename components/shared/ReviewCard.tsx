@@ -30,6 +30,7 @@ export default function ReviewCard({ review }: { review: Review }) {
               src={review.image}
               alt="Reviewer Image"
               fill
+              sizes="48px"
               className="object-cover"
             />
           </div>
