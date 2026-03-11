@@ -4,6 +4,7 @@ import ChooseSection from "./sections/ChooseSection";
 import HeroSection from "./sections/HeroSection";
 import ProcessSection from "./sections/ProcessSection";
 import ProjectSection from "./sections/ProjectSection";
+import ReviewsSection from "./sections/ReviewsSection";
 import ServiceSection from "./sections/ServiceSection";
 
 export default function Home() {
@@ -15,7 +16,8 @@ export default function Home() {
       <ChooseSection />
       <ProjectSection />
       <BeforeAfterSection />
-      <ProcessSection/>
+      <ProcessSection />
+      <ReviewsSection />
     </>
   );
 }
