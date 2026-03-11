@@ -79,6 +79,7 @@ export default function ProjectSection() {
                   alt={item.title}
                   fill
                   className="object-cover"
+                  sizes="(min-width:1536px) 1040px,(min-width:1024px) 880px, 100vw"
                 />
               </div>
 
@@ -86,7 +87,9 @@ export default function ProjectSection() {
                 <div className="w-full md:w-max p-10 bg-black/30 backdrop-blur-sm rounded-2xl text-white">
                   <span className="text-sm">{item.category}</span>
                   <h3 className="mt-4">{item.title}</h3>
-                  <span className="font-light text-sm opacity-70">{item.location}</span>
+                  <span className="font-light text-sm opacity-70">
+                    {item.location}
+                  </span>
                 </div>
               </div>
             </div>
