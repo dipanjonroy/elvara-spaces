@@ -23,6 +23,7 @@ export default function BrandSlider() {
                 alt="Brand Logo"
                 fill
                 className="object-contain"
+                sizes="176px"
               />
             </div>
           ))
