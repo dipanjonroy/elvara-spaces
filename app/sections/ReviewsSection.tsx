@@ -17,7 +17,7 @@ export default function ReviewsSection() {
             <EntryBottom>
               <p className="mt-5">
                 Our work is best measured by the satisfaction of our clients.
-                Here’s what homeowners and businesses say about their
+                Here&apos;s what homeowners and businesses say about their
                 experience—from design to final handover.
               </p>
             </EntryBottom>
