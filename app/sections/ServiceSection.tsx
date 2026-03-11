@@ -170,7 +170,7 @@ export default function ServiceSection() {
                         alt="Arrow Image"
                         width={70}
                         height={5}
-                        className={`hidden lg:block transition-all duration-1000 ease-in-out ${isActive ? "translate-x-0 opacity-100" : "-translate-x-30 opacity-0"}`}
+                        className={`hidden lg:block w-auto h-auto transition-all duration-1000 ease-in-out ${isActive ? "translate-x-0 opacity-100" : "-translate-x-30 opacity-0"}`}
                       />
                     </span>
                   </button>
@@ -190,7 +190,7 @@ export default function ServiceSection() {
                       src={services[prevActiveIndex].img}
                       alt={services[prevActiveIndex].name}
                       fill
-                      sizes="100vw"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                       className="object-cover"
                     />
                   </div>
@@ -201,7 +201,7 @@ export default function ServiceSection() {
                     src={services[activeIndex].img}
                     alt={services[activeIndex].name}
                     fill
-                    sizes="100vw"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
                   />
                 </div>
