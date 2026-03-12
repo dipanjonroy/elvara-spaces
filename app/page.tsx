@@ -1,3 +1,4 @@
+import AboutSection from "./sections/AboutSection";
 import BeforeAfterSection from "./sections/BeforeAfterSection";
 import BrandSection from "./sections/BrandSection";
 import ChooseSection from "./sections/ChooseSection";
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <HeroSection />
       <BrandSection />
+      <AboutSection/>
       <ServiceSection />
       <ChooseSection />
       <ProjectSection />
