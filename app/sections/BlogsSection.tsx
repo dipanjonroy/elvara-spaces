@@ -9,6 +9,7 @@ export default function BlogsSection() {
     <section className="py-20">
       <div className="container mx-auto">
         <div className="space-y-4">
+          {/* Section area */}
           <div className="w-full max-w-140">
             <SectionHeader
               badge="Blogs"
