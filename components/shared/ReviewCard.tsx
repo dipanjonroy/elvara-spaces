@@ -15,11 +15,11 @@ export default function ReviewCard({ review }: { review: Review }) {
     <div className="w-full p-6 bg-gray-200 rounded-2xl my-3">
       <div className="w-full">
         <div className="flex gap-2">
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
+         {
+          [...Array(5)].map((_,i)=>(
+             <FaStar key={i} className={`${i<review.rating ? "text-(--text-color)":"text-gray-400"}`}/>
+          ))
+         }
         </div>
 
         <p className="my-6">{review.review}</p>
