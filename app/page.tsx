@@ -1,5 +1,6 @@
 import AboutSection from "./sections/AboutSection";
 import BeforeAfterSection from "./sections/BeforeAfterSection";
+import BlogsSection from "./sections/BlogsSection";
 import BrandSection from "./sections/BrandSection";
 import ChooseSection from "./sections/ChooseSection";
 import CTASection from "./sections/CTASection";
@@ -22,6 +23,7 @@ export default function Home() {
       <ProcessSection />
       <ReviewsSection />
       <CTASection />
+      <BlogsSection/>
     </>
   );
 }

@@ -21,7 +21,7 @@
     @apply font-bold text-lg lg:text-2xl;
   }
   p {
-    @apply text-sm lg:text-base;
+    @apply text-sm lg:text-base leading-normal;
   }
 }
 
