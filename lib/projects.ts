@@ -68,11 +68,11 @@ export const projects: ProjectTypes[]=[
     title: "Contemporary Bedroom Redesign",
     category:"Bedroom",
     images:[
-      "/projects/Bedroom/p1/Bedroom-project-1-1.jpg",
-      "/projects/Bedroom/p1/Bedroom-project-1-2.jpg",
-      "/projects/Bedroom/p1/Bedroom-project-1-3.jpg",
-      "/projects/Bedroom/p1/Bedroom-project-1-4.jpg",
-      "/projects/Bedroom/p1/Bedroom-project-1-5.jpg",
+      "/projects/Bedroom/P1/Bedroom-project-1-1.jpg",
+      "/projects/Bedroom/P1/Bedroom-project-1-2.jpg",
+      "/projects/Bedroom/P1/Bedroom-project-1-3.jpg",
+      "/projects/Bedroom/P1/Bedroom-project-1-4.jpg",
+      "/projects/Bedroom/P1/Bedroom-project-1-5.jpg",
     ],
     location:"111 Wellington St, Ottawa, ON, Canada"
   },
