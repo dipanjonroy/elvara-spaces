@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/all";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,10 +23,15 @@ const SERVICES = [
 
 export default function Footer() {
   const largeTextRef = useRef<HTMLDivElement>(null);
+  const windowWidth = useWindowWidth();
 
   useGSAP(
     () => {
       const letters = gsap.utils.toArray(".letter");
+
+      const getEndValue = ()=>{
+        if(windowWidth < 640) return "bottom 80%"
+      }
 
       gsap.fromTo(
         letters,
@@ -38,7 +44,7 @@ export default function Footer() {
           scrollTrigger: {
             trigger: largeTextRef.current,
             start: "top bottom",
-            end: "top 70%",
+            end: "bottom 80%",
             scrub: 1.8,
           },
         },
