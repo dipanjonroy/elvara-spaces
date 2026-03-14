@@ -50,7 +50,7 @@ export default function BeforeAfterSection() {
             onPointerDown={handlePointerDown}
             onPointerUp={handlePointerUp}
             onPointerMove={handleMove}
-            className="w-full relative mt-10"
+            className="w-full relative mt-10 touch-none"
           >
             <div className="relative w-full xl:max-w-250 aspect-video overflow-hidden m-auto rounded-3xl select-none">
               <Image
