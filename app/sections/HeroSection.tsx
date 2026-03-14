@@ -113,7 +113,7 @@ export default function HeroSection() {
           <span className="absolute inset-x-0 bottom-0 h-150 bg-linear-to-t from-(--foreground)/80 to-transparent z-1 pointer-events-none" />
         </div>
 
-        <div className="absolute inset-0 pb-14 2xl:pb-20 z-3">
+        <div className="absolute inset-0 pb-20 z-3">
           <div className="container h-full mx-auto">
             <div className="w-full h-full flex flex-col justify-end">
               <div className="flex items-end justify-between">
