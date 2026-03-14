@@ -31,7 +31,7 @@ export default function ProcessSection() {
         scrollTrigger: {
           trigger: processRef.current,
           start: "top 80%",
-          end: "+=500",
+          end: "+=200",
           scrub: 1.2,
         },
       });
