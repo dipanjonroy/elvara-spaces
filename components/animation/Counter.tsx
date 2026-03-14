@@ -37,7 +37,7 @@ export default function Counter({
       },
       scrollTrigger: {
         trigger: counterRef.current,
-        start: "top 80%",
+        start: "top 95%",
         toggleActions: "play none none reverse",
       },
     });

@@ -8,6 +8,8 @@ import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Counter from "@/components/animation/Counter";
+import EntryBottom from "@/components/animation/EntryBottom";
+import ImageShutter from "@/components/animation/ImageShutter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +37,7 @@ export default function AboutSection() {
   });
 
   return (
-    <section className="py-20">
+    <section className="py-20 md:py-25 lg:py-30">
       <div className="container mx-auto">
         <div className="w-full max-w-180">
           <SectionHeader
@@ -45,11 +47,7 @@ export default function AboutSection() {
         </div>
 
         <div className="flex flex-col xl:flex-row gap-10 lg:gap-20 mt-10">
-          <div
-            ref={imageRef}
-            style={{ clipPath: "inset(0% 0% 100% 0%)" }}
-            className="w-full aspect-8/6 relative rounded-3xl overflow-hidden"
-          >
+          <ImageShutter className="w-full aspect-8/6 relative rounded-3xl overflow-hidden">
             <Image
               src="/About_Image.jpg"
               alt="About us image"
@@ -57,24 +55,29 @@ export default function AboutSection() {
               sizes="100vw"
               className="object-cover"
             />
-          </div>
+          </ImageShutter>
 
           <div className="w-full flex flex-col gap-10 xl:gap-0 lg:justify-between">
             <div className="space-y-9">
-              <p className="w-full max-w-140">
-                We believe interior design is not decoration — it&apos;s
-                problem-solving through space. We believe great interiors are
-                built on understanding how people live, work, and move through a
-                space. Every project is guided by thoughtful planning, honest
-                communication, and a commitment to creating spaces that feel
-                functional, comfortable, and timeless.
-              </p>
-              <LinkButton
-                name="Explore More"
-                className="bg-(--foreground) text-(--background)"
-                iconClass="bg-(--background) text-(--foreground)"
-                path=""
-              />
+              <EntryBottom>
+                <p className="w-full max-w-140">
+                  We believe interior design is not decoration — it&apos;s
+                  problem-solving through space. We believe great interiors are
+                  built on understanding how people live, work, and move through
+                  a space. Every project is guided by thoughtful planning,
+                  honest communication, and a commitment to creating spaces that
+                  feel functional, comfortable, and timeless.
+                </p>
+              </EntryBottom>
+
+              <EntryBottom>
+                <LinkButton
+                  name="Explore More"
+                  className="bg-(--foreground) text-(--background)"
+                  iconClass="bg-(--background) text-(--foreground)"
+                  path=""
+                />
+              </EntryBottom>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0 sm:justify-between">

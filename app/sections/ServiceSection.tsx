@@ -43,8 +43,8 @@ export default function ServiceSection() {
           ease: "expo.out",
           scrollTrigger: {
             trigger: btn,
-            start: "top 90%",
-            toggleActions: "play none none none",
+            start: "top bottom",
+            toggleActions: "play none none reverse",
           },
         });
       });
@@ -136,7 +136,7 @@ export default function ServiceSection() {
   }, [activeIndex, prevActiveIndex]);
 
   return (
-    <section className="py-20">
+    <section className="py-20 md:py-25 lg:py30">
       <div className="container mx-auto">
         <div className="w-full">
           <div className="w-full mx-auto">

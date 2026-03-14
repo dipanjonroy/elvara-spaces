@@ -39,7 +39,7 @@ export default function EntryBottom({
         ease: "power3.out",
         scrollTrigger: {
           trigger: animRef.current,
-          start: "top 90%",
+          start: "top bottom",
           toggleActions: "play none none none",
         },
       },

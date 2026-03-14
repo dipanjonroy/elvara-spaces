@@ -4,7 +4,7 @@ import SectionHeader from "@/components/shared/SectionHeader";
 
 export default function ReviewsSection() {
   return (
-    <section className="py-20">
+    <section className="py-20 md:py-25 lg:py-30">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row items-center gap-12">
           <div className="w-full xl:w-150">

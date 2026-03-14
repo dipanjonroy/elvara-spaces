@@ -11,12 +11,12 @@ export default function ModalLayout() {
 
   let alignClass;
 
-  if(align === "center"){
-    alignClass = "flex items-center justify-center"
-  } else if(align === "right"){
-    alignClass ="md:flex md:items-end md:justify-end"
+  if (align === "center") {
+    alignClass = "flex items-center justify-center";
+  } else if (align === "right") {
+    alignClass = "md:flex md:items-end md:justify-end";
   } else {
-    alignClass = "flex items-start justify-start"
+    alignClass = "flex items-start justify-start";
   }
 
   useGSAP(() => {

@@ -26,9 +26,15 @@ export default function ChooseSection() {
         end: "bottom bottom",
         pin: stickyRef.current,
         pinSpacing: false,
+        anticipatePin: 0,
+        scrub: false,
       });
     }
-  });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, [windowWidth]);
 
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLDivElement>(
@@ -61,11 +67,14 @@ export default function ChooseSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20">
+    <section ref={sectionRef} className="py-20 md:py-25 lg:py-30">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-22 xl:gap-40">
           <div className="relative">
-            <div ref={stickyRef}>
+            <div
+              ref={stickyRef}
+              style={{ willChange: "transform", transform: "translateZ(0)" }}
+            >
               <SectionHeader
                 badge="Why us"
                 title="Why Clients Trust Us With Their Spaces"
