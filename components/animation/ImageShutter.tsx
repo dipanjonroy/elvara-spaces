@@ -28,10 +28,10 @@ export default function ImageShutter({
         {
           clipPath: "inset(0% 0% 0% 0%)",
           duration: 1.8,
-          ease: "power2.out",
+          ease: "power3.out",
           scrollTrigger: {
             trigger: imageRef.current,
-            start: "top 85%",
+            start: "top 70%",
           },
         },
       );
