@@ -29,10 +29,6 @@ export default function Footer() {
     () => {
       const letters = gsap.utils.toArray(".letter");
 
-      const getEndValue = ()=>{
-        if(windowWidth < 640) return "bottom 80%"
-      }
-
       gsap.fromTo(
         letters,
         { y: 50 },
