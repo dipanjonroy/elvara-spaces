@@ -6,7 +6,7 @@ import { articlesData } from "@/lib/articles";
 
 export default function BlogsSection() {
   return (
-    <section className="py-20">
+    <section className="py-20 md:py-25 lg:py-30">
       <div className="container mx-auto">
         <div className="space-y-4">
           <div className="w-full max-w-140">
