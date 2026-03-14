@@ -9,7 +9,7 @@ export default function BeforeAfterSection() {
   const [sliderPosition, setSliderPosition] = useState<number>(50);
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
-  const handleMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
@@ -18,16 +18,17 @@ export default function BeforeAfterSection() {
     setSliderPosition(percent);
   };
 
-  const handleMouseDown = () => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
     setIsDragging(false);
   };
 
   return (
-    <section className="pb-20">
+    <section className="pb-20 md:pb-25 lg:pb-30">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:items-center justify-center gap-5 xl:gap-20">
           <div className="w-full max-w-120">
@@ -46,14 +47,12 @@ export default function BeforeAfterSection() {
           </div>
 
           <div
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerMove={handleMove}
             className="w-full relative mt-10"
           >
-            <div
-              onMouseMove={handleMove}
-              className="relative w-full xl:max-w-250 aspect-video overflow-hidden m-auto rounded-3xl select-none"
-            >
+            <div className="relative w-full xl:max-w-250 aspect-video overflow-hidden m-auto rounded-3xl select-none">
               <Image
                 src="/After.jpg"
                 alt="After renovation image"
