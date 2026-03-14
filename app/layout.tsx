@@ -25,13 +25,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${hostGrotesk.variable} antialiased`} cz-shortcut-listen="true">
+      <body
+        className={`${hostGrotesk.variable} antialiased`}
+        cz-shortcut-listen="true"
+      >
         <Header />
         <SmoothProvider>
           {children}
-          <ModalLayout />
+
           <Footer />
         </SmoothProvider>
+        <ModalLayout />
       </body>
     </html>
   );
