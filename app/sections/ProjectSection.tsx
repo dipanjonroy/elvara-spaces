@@ -51,7 +51,7 @@ export default function ProjectSection() {
           },
         });
 
-        const st = ScrollTrigger.getById(tween.scrollTrigger?.vars.id ?? "");
+        ScrollTrigger.getById(tween.scrollTrigger?.vars.id ?? "");
         if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
       });
 
