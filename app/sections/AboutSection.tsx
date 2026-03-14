@@ -60,7 +60,7 @@ export default function AboutSection() {
           <div className="w-full flex flex-col gap-10 xl:gap-0 lg:justify-between">
             <div className="space-y-9">
               <EntryBottom>
-                <p className="w-full max-w-140">
+                <p className="w-full xl:max-w-140">
                   We believe interior design is not decoration — it&apos;s
                   problem-solving through space. We believe great interiors are
                   built on understanding how people live, work, and move through

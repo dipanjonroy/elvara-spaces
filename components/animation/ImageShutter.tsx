@@ -31,7 +31,7 @@ export default function ImageShutter({
           ease: "power3.out",
           scrollTrigger: {
             trigger: imageRef.current,
-            start: "top 70%",
+            start: "top 80%",
           },
         },
       );
