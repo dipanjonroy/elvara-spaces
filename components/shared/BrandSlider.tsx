@@ -30,8 +30,8 @@ export default function BrandSlider() {
         }
       </div>
 
-      <span className="absolute inset-y-0 left-0 w-40 lg:w-140 bg-linear-to-r from-(--background) to-transparent pointer-events-none"/>
-      <span className="absolute inset-y-0 right-0 w-40 lg:w-140 bg-linear-to-l from-(--background) to-transparent pointer-events-none"/>
+      <span className="absolute inset-y-0 left-0 w-40 md:w-50 xl:w-120 bg-linear-to-r from-(--background) to-transparent pointer-events-none"/>
+      <span className="absolute inset-y-0 right-0 w-40 md:w-50 xl:w-120 bg-linear-to-l from-(--background) to-transparent pointer-events-none"/>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function BeforeAfterSection() {
     <section className="pb-20 md:pb-25 lg:pb-30">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:items-center justify-center gap-5 xl:gap-20">
-          <div className="w-full max-w-120">
+          <div className="w-full xl:max-w-120">
             <SectionHeader
               badge="Transformation"
               title="From Outdated to Outstanding"

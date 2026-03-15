@@ -7,7 +7,6 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import useWindowWidth from "@/hooks/useWindowWidth";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,25 +15,21 @@ export default function ChooseSection() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const itemCardRef = useRef<HTMLDivElement>(null);
 
-  const windowWidth = useWindowWidth();
-
   useGSAP(() => {
-    if (windowWidth >= 1024) {
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
-        start: "top 25%",
+        start: "top 23%",
         end: "bottom bottom",
         pin: stickyRef.current,
         pinSpacing: false,
-        anticipatePin: 0,
-        scrub: false,
       });
-    }
+    });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, [windowWidth]);
+    return () => mm.revert();
+  }, []);
 
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLDivElement>(
@@ -97,16 +92,16 @@ export default function ChooseSection() {
                 return (
                   <div
                     key={item.id}
-                    className="bg-(--foreground)/90 p-10 md:p-14 xl:p-16 rounded-3xl"
+                    className="bg-(--foreground)/90 p-8 md:p-10 xl:p-16 rounded-3xl"
                   >
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                       <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-(--foreground) flex items-center justify-center text-(--background) text-3xl">
                         <Icon />
                       </div>
                       <h3 className="text-(--background) font-semibold">
                         {item.title}
                       </h3>
-                      <p className="text-(--background)">{item.desc}</p>
+                      <p className="text-(--background) opacity-80">{item.desc}</p>
                     </div>
                   </div>
                 );

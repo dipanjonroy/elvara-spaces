@@ -15,7 +15,7 @@ type ArticleProps = {
 export default function ArticleCard({ article }: { article: ArticleProps }) {
   return (
     <Link href="#" className="w-full">
-      <div className="bg-(--foreground)/8 p-8 rounded-3xl group">
+      <div className="bg-(--foreground)/8 p-6 lg:p-5 xl:p-8 rounded-3xl group">
         <div className="w-full space-y-7">
           <div className="relative">
             <ImageShutter className="w-full aspect-16/12 relative overflow-hidden rounded-2xl">
@@ -40,7 +40,7 @@ export default function ArticleCard({ article }: { article: ArticleProps }) {
 
             <div className="mt-6 flex items-center justify-between">
               <span className="font-semibold">Read More</span>
-              <div className="relative w-12 h-12 flex items-center justify-center bg-(--foreground) rounded-full text-3xl text-(--background) overflow-hidden">
+              <div className="relative w-9 h-9 md:w-10 md:h-10 xl:w-12 xl:h-12 flex items-center justify-center bg-(--foreground) rounded-full text-3xl text-(--background) overflow-hidden">
                 <span className="absolute duration-300 transition-all ease-in-out group-hover:translate-x-10">
                   <MdKeyboardArrowRight />
                 </span>

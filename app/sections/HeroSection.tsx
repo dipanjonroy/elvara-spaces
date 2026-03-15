@@ -113,14 +113,14 @@ export default function HeroSection() {
           <span className="absolute inset-x-0 bottom-0 h-150 bg-linear-to-t from-(--foreground)/80 to-transparent z-1 pointer-events-none" />
         </div>
 
-        <div className="absolute inset-0 pb-20 z-3">
+        <div className="absolute inset-0 pb-14 lg:pb-20 z-3">
           <div className="container h-full mx-auto">
             <div className="w-full h-full flex flex-col justify-end">
               <div className="flex items-end justify-between">
                 <div className="w-full sm:w-2/3 xl:w-1/2 2xl:w-2/3">
                   <h1
                     ref={h1Ref}
-                    className="text-4xl lg:text-5xl 2xl:text-6xl font-semibold text-(--background) leading-tight"
+                    className="text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-semibold text-(--background) leading-tight"
                   >
                     {heroText.split(" ").map((word, i) => (
                       <span key={i} className="word inline-block me-2 lg:me-3">
@@ -133,7 +133,7 @@ export default function HeroSection() {
                     <PrimaryButton
                       onClick={() => console.log("Btn Clicked")}
                       name="Book Free Consultation"
-                      className="bg-(--background) text-(--text-color) mt-8"
+                      className="bg-(--background) text-(--text-color) mt-6 lg:mt-8"
                       iconClass="bg-(--foreground) text-(--background)"
                     />
                   </div>

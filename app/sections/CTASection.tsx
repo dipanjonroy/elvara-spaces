@@ -9,7 +9,7 @@ export default function CTASection() {
   return (
     <section className="py-20 md:py-25 lg:py-30">
       <div className="container mx-auto">
-        <div className="w-full max-w-300 mx-auto p-10 rounded-3xl bg-(--foreground)">
+        <div className="w-full max-w-300 mx-auto p-7 md:p-9 xl:p-10 rounded-3xl bg-(--foreground)">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="w-full text-(--background) space-y-5">
               <EntryBottom>

@@ -38,7 +38,7 @@ export default function Footer() {
           scrollTrigger: {
             trigger: largeTextRef.current,
             start: "top bottom",
-            end: "bottom 80%",
+            end: "bottom 90%",
             scrub: 1.8,
           },
         },
@@ -48,7 +48,7 @@ export default function Footer() {
   );
   return (
     <footer className="lg:px-6 lg:pb-6">
-      <div className="w-full h-full bg-(--foreground) rounded-4xl py-16">
+      <div className="w-full h-full bg-(--foreground) rounded-tl-4xl rounded-tr-4xl lg:rounded-4xl py-16">
         <div className="container mx-auto text-(--background)">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Busniness Info */}

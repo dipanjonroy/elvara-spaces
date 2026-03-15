@@ -19,7 +19,7 @@ export default function BlogsSection() {
 
           <div className="flex flex-col lg:flex-row items-end justify-between gap-8">
             <EntryBottom>
-              <p className="w-full max-w-140">
+              <p className="w-full lg:max-w-140">
                 Practical articles based on real design experience, covering
                 planning, renovation, and everyday interior challenges.
               </p>
@@ -36,7 +36,7 @@ export default function BlogsSection() {
           </div>
 
           {/* Blogs Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-14">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-14">
             {articlesData.slice(0, 3).map((article) => (
               <ArticleCard key={article.id} article={article} />
             ))}
