@@ -3,7 +3,7 @@
 import HappyCustomers from "@/components/shared/HappyCustomers";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap } from "@/lib/gsap";
 import Image from "next/image";
 import { useRef } from "react";
 

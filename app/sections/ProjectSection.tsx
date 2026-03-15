@@ -6,12 +6,10 @@ import { projects } from "@/lib/projects";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import EntryBottom from "@/components/animation/EntryBottom";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectSection() {
   const contentRef = useRef<HTMLDivElement>(null);

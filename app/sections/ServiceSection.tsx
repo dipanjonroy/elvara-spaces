@@ -2,13 +2,10 @@
 
 import SectionHeader from "@/components/shared/SectionHeader";
 import { services } from "@/lib/services";
-import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import EntryBottom from "@/components/animation/EntryBottom";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from "@/lib/gsap";
 
 export default function ServiceSection() {
   const [activeIndex, setActiveIndex] = useState<number>(0);

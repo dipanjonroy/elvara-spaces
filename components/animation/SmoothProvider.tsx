@@ -1,7 +1,7 @@
 "use client";
 
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-import gsap from "gsap";
+import { gsap } from "@/lib/gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 
