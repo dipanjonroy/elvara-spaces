@@ -5,13 +5,10 @@ import LinkButton from "@/components/ui/LinkButton";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
 import Counter from "@/components/animation/Counter";
 import EntryBottom from "@/components/animation/EntryBottom";
 import ImageShutter from "@/components/animation/ImageShutter";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from "@/lib/gsap";
 
 export default function AboutSection() {
   const imageRef = useRef<HTMLDivElement>(null);

@@ -1,11 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
+import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 type ImageShutterProps = {
   children: React.ReactNode;

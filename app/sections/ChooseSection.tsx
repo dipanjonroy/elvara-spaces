@@ -5,10 +5,7 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import { whyUs } from "@/lib/whyUs";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 export default function ChooseSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -101,7 +98,9 @@ export default function ChooseSection() {
                       <h3 className="text-(--background) font-semibold">
                         {item.title}
                       </h3>
-                      <p className="text-(--background) opacity-80">{item.desc}</p>
+                      <p className="text-(--background) opacity-80">
+                        {item.desc}
+                      </p>
                     </div>
                   </div>
                 );

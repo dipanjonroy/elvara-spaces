@@ -1,11 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap } from "@/lib/gsap";
 
 interface EntryBottomProps {
   children: React.ReactNode;
