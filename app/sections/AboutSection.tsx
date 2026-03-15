@@ -49,7 +49,7 @@ export default function AboutSection() {
               src="/About_Image.jpg"
               alt="About us image"
               fill
-              sizes="100vw"
+              sizes="(max-width:1024px) 100vw, 50vw"
               className="object-cover"
             />
           </ImageShutter>

@@ -96,7 +96,7 @@ export default function MobileNavModal() {
   return (
     <div
       ref={modalRef}
-      className="w-full md:w-100 shrink-0 h-screen bg-(--background) p-8 shadow-md"
+      className="w-full md:w-100 shrink-0 h-svh bg-(--background) p-8 shadow-md"
     >
       <div className="w-full h-full">
         <div className="flex items-center justify-between pb-4 border-b border-(--black-border) mb-8">
