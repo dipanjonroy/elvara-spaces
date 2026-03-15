@@ -123,7 +123,7 @@ export default function ProjectSection() {
           ))}
         </div>
       </div>
-      <div className="h-screen"></div>
+      <div className="h-dvh"></div>
     </section>
   );
 }
