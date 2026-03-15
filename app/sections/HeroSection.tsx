@@ -93,7 +93,7 @@ export default function HeroSection() {
   );
 
   return (
-    <section ref={sectionRef} className="relative w-full h-300 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-svh lg:h-dvh overflow-hidden">
       <div className="relative w-full h-full">
         <div
           ref={heroImageRef}
