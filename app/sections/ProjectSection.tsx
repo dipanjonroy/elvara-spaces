@@ -25,7 +25,7 @@ export default function ProjectSection() {
     const triggers: ScrollTrigger[] = [];
 
     const getStartValue = ()=>{
-      if(windowWidth < 640) return "top 19%";
+      if(windowWidth < 640) return "top 15%";
       return "top 22%"
     }
 
@@ -98,7 +98,7 @@ export default function ProjectSection() {
           {projects.map((item) => (
             <div
               key={item.id}
-              className="project-card w-full lg:w-220 2xl:w-260 h-130 lg:h-120 2xl:h-140 mx-auto relative mt-[50vh] rounded-3xl overflow-hidden"
+              className="project-card w-full lg:w-220 2xl:w-260 h-150 lg:h-120 2xl:h-140 mx-auto relative mt-[50vh] rounded-3xl overflow-hidden"
             >
               <div className="w-full h-full relative">
                 <Image
