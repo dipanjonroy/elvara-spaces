@@ -33,7 +33,6 @@ export default function ProjectSection() {
       triggers.forEach((st) => st.kill());
       triggers.length = 0;
 
-      const startValue = getStartValue();
 
       items.forEach((item, i) => {
         const isLast = i === items.length - 1;
@@ -42,7 +41,7 @@ export default function ProjectSection() {
           ease: "none",
           scrollTrigger: {
             trigger: item,
-            start: startValue,
+            start: () => getStartValue(),
             endTrigger: contentRef.current,
             scrub: true,
             pin: item,
