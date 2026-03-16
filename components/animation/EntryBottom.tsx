@@ -41,7 +41,7 @@ export default function EntryBottom({
         },
       },
     );
-  }, []);
+  }, {scope: animRef});
 
   return (
     <div ref={animRef} className={`w-full ${className}`}>
