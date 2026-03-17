@@ -5,7 +5,7 @@ type MenuItem = {
 }
 export const menus: MenuItem[] = [
   {id:1, name: "Home", url:"/"},
-  {id:2, name: "About", url:"/"},
+  {id:2, name: "About", url:"/about-us"},
   {id:3, name: "Projects", url:"/"},
   {id:4, name: "Contact", url:"/"},
   {id:5, name: "Blog", url:"/"},

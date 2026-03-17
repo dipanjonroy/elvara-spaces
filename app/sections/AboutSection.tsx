@@ -9,6 +9,7 @@ import Counter from "@/components/animation/Counter";
 import EntryBottom from "@/components/animation/EntryBottom";
 import ImageShutter from "@/components/animation/ImageShutter";
 import { gsap } from "@/lib/gsap";
+import Achievements from "@/components/shared/Achievements";
 
 export default function AboutSection() {
   const imageRef = useRef<HTMLDivElement>(null);
@@ -77,43 +78,7 @@ export default function AboutSection() {
               </EntryBottom>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0 sm:justify-between">
-              <div className="">
-                <Counter
-                  end={60}
-                  duration={2}
-                  suffix="+"
-                  className="font-bold text-4xl lg:text-6xl"
-                />
-                <span className="font-medium opacity-80">
-                  Projects Completed
-                </span>
-              </div>
-              <span className="w-full sm:w-px h-px sm:h-14 bg-(--foreground)" />
-              <div className="">
-                <Counter
-                  end={10}
-                  duration={1}
-                  suffix="+"
-                  className="font-bold text-4xl lg:text-6xl"
-                />
-                <span className="font-medium opacity-80">
-                  Years of Experience
-                </span>
-              </div>
-              <span className="w-full sm:w-px h-px sm:h-14 bg-(--foreground)" />
-              <div className="">
-                <Counter
-                  end={30}
-                  duration={1}
-                  suffix="+"
-                  className="font-bold text-4xl lg:text-6xl"
-                />
-                <span className="font-medium opacity-80">
-                  Awards & Recognition
-                </span>
-              </div>
-            </div>
+            <Achievements className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0 sm:justify-between" />
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ export default function HeroSection() {
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const btnRef = useRef<HTMLDivElement>(null);
   const customerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const heroText =
     "Functional, Elegant & Fully Customized Interiors — Residential to Commercial";
@@ -92,8 +93,28 @@ export default function HeroSection() {
     { scope: sectionRef },
   );
 
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "50% 50%",
+          scrub:true,
+        },
+      });
+
+      tl.to(contentRef.current,{y:-200, ease:"none"},0)
+        .to(sectionRef.current,{y:160, ease:"none"},0)
+    });
+
+    return () => ctx.revert();
+  });
+
   return (
-    <section ref={sectionRef} className="relative w-full h-svh lg:h-dvh overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative w-full h-svh lg:h-dvh overflow-hidden"
+    >
       <div className="relative w-full h-full">
         <div
           ref={heroImageRef}
@@ -116,7 +137,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 pb-14 lg:pb-20 z-3">
           <div className="container h-full mx-auto">
             <div className="w-full h-full flex flex-col justify-end">
-              <div className="flex items-end justify-between">
+              <div ref={contentRef} className="flex items-end justify-between">
                 <div className="w-full sm:w-2/3 xl:w-1/2 2xl:w-2/3">
                   <h1
                     ref={h1Ref}
@@ -129,7 +150,7 @@ export default function HeroSection() {
                     ))}
                   </h1>
 
-                  <div ref={btnRef} style={{ opacity: 0, y: 50 }}>
+                  <div ref={btnRef}>
                     <PrimaryButton
                       onClick={() => console.log("Btn Clicked")}
                       name="Book Free Consultation"
