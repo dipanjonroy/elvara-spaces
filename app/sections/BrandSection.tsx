@@ -2,7 +2,7 @@ import BrandSlider from "@/components/shared/BrandSlider";
 
 export default function BrandSection() {
   return (
-    <section className="pt-20 pb-10 md:pt-25 lg:pt-30">
+    <section className="pt-20 pb-10 md:pt-25 lg:pt-30 relative bg-(--background) z-3">
       <div className="container mx-auto">
         <div className="w-full flex flex-col lg:flex-row items-center gap-6 xl:gap-20 overflow-hidden">
           <div className="w-full lg:w-80">
