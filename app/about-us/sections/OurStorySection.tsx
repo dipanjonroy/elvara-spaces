@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function OurStorySection() {
   return (
-    <section className="py-20 md:py-25 lg:py-30">
+    <section className="py-20 md:py-25 lg:py-30 relative z-3 bg-(--background)">
       <div className="container mx-auto">
         <div className="w-full xl:max-w-160">
           <SectionHeader
