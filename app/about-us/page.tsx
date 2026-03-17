@@ -2,6 +2,7 @@ import AboutHeroSection from "./sections/AboutHeroSection";
 import type { Metadata } from "next";
 import OurStorySection from "./sections/OurStorySection";
 import AchievementSection from "./sections/AchievementSection";
+import PartnerSection from "./sections/PartnerSection";
 
 export const metadata: Metadata = {
   title: "About Us | Elvara Spaces",
@@ -15,6 +16,7 @@ export default function AboutUs() {
       <AboutHeroSection />
       <OurStorySection />
       <AchievementSection/>
+      <PartnerSection/>
     </>
   );
 }

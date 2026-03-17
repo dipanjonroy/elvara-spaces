@@ -35,7 +35,7 @@ export default function AchievementSection() {
     { scope: headingRef },
   );
   return (
-    <section className="py-20 md:py-25 lg:py-30">
+    <section className="pt-20 md:pt-25 lg:pt-30">
       <div className="bg-(--foreground) py-20 lg:py-22 xl:py-30">
         <div className="container mx-auto">
           <div className="flex flex-col items-center w-full max-w-300 mx-auto gap-16">
