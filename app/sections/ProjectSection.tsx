@@ -10,56 +10,110 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import EntryBottom from "@/components/animation/EntryBottom";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
-
 export default function ProjectSection() {
   const contentRef = useRef<HTMLDivElement>(null);
   const windowWidth = useWindowWidth();
 
+  // useGSAP(() => {
+  //   const items = gsap.utils.toArray<HTMLDivElement>(
+  //     contentRef.current!.querySelectorAll(".project-card"),
+  //   );
+
+  //   const triggers: ScrollTrigger[] = [];
+
+  //   const getStartValue = ()=>{
+  //     if(windowWidth < 640) return "top 15%";
+  //     return "top 22%"
+  //   }
+
+  //   const initAnimations = () => {
+  //     triggers.forEach((st) => st.kill());
+  //     triggers.length = 0;
+
+  //     items.forEach((item, i) => {
+  //       const isLast = i === items.length - 1;
+  //       const tween = gsap.to(item, {
+  //         scale: isLast ? 1 : 0.7 + 0.2 * (i / (items.length - 1)),
+  //         ease: "none",
+  //         scrollTrigger: {
+  //           trigger: item,
+  //           start: () => getStartValue(),
+  //           endTrigger: contentRef.current,
+  //           scrub: true,
+  //           pin: item,
+  //           pinSpacing: false,
+  //           invalidateOnRefresh: true,
+  //         },
+  //       });
+
+  //       ScrollTrigger.getById(tween.scrollTrigger?.vars.id ?? "");
+  //       if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
+  //     });
+
+  //     ScrollTrigger.refresh();
+  //   };
+
+  //   if (document.readyState === "complete") {
+  //     requestAnimationFrame(initAnimations);
+  //   } else {
+  //     window.addEventListener("load", initAnimations, { once: true });
+  //   }
+  // }, []);
+
   useGSAP(() => {
-    const items = gsap.utils.toArray<HTMLDivElement>(
-      contentRef.current!.querySelectorAll(".project-card"),
-    );
+    if (!contentRef.current) return;
 
-    const triggers: ScrollTrigger[] = [];
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLDivElement>(
+        contentRef.current!.querySelectorAll(".project-card"),
+      );
 
-    const getStartValue = ()=>{
-      if(windowWidth < 640) return "top 15%";
-      return "top 22%"
-    }
+      const mm = gsap.matchMedia();
 
-    const initAnimations = () => {
-      triggers.forEach((st) => st.kill());
-      triggers.length = 0;
+      mm.add("(min-width: 640px)", () => {
+        cards.forEach((card, i) => {
+          const isLast = i === cards.length - 1;
 
-
-      items.forEach((item, i) => {
-        const isLast = i === items.length - 1;
-        const tween = gsap.to(item, {
-          scale: isLast ? 1 : 0.7 + 0.2 * (i / (items.length - 1)),
-          ease: "none",
-          scrollTrigger: {
-            trigger: item,
-            start: () => getStartValue(),
-            endTrigger: contentRef.current,
-            scrub: true,
-            pin: item,
-            pinSpacing: false,
-            invalidateOnRefresh: true,
-          },
+          gsap.to(card, {
+            scale: isLast ? 1 : 0.8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 22%",
+              end: "bottom top",
+              endTrigger: contentRef.current,
+              pin: true,
+              pinSpacing: false,
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
+          });
         });
-
-        ScrollTrigger.getById(tween.scrollTrigger?.vars.id ?? "");
-        if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
       });
 
-      ScrollTrigger.refresh();
-    };
+      mm.add("(max-width: 639px)", () => {
+        cards.forEach((card, i) => {
+          const isLast = i === cards.length - 1;
 
-    if (document.readyState === "complete") {
-      requestAnimationFrame(initAnimations);
-    } else {
-      window.addEventListener("load", initAnimations, { once: true });
-    }
+          gsap.to(card, {
+            scale: isLast ? 1 : 0.8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 15%",
+              end: "bottom top",
+              endTrigger: contentRef.current,
+              pin: true,
+              pinSpacing: false,
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
+          });
+        });
+      });
+    }, contentRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
