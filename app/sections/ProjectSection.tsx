@@ -6,59 +6,11 @@ import { projects } from "@/lib/projects";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useRef } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import EntryBottom from "@/components/animation/EntryBottom";
-import useWindowWidth from "@/hooks/useWindowWidth";
 
 export default function ProjectSection() {
   const contentRef = useRef<HTMLDivElement>(null);
-  const windowWidth = useWindowWidth();
-
-  // useGSAP(() => {
-  //   const items = gsap.utils.toArray<HTMLDivElement>(
-  //     contentRef.current!.querySelectorAll(".project-card"),
-  //   );
-
-  //   const triggers: ScrollTrigger[] = [];
-
-  //   const getStartValue = ()=>{
-  //     if(windowWidth < 640) return "top 15%";
-  //     return "top 22%"
-  //   }
-
-  //   const initAnimations = () => {
-  //     triggers.forEach((st) => st.kill());
-  //     triggers.length = 0;
-
-  //     items.forEach((item, i) => {
-  //       const isLast = i === items.length - 1;
-  //       const tween = gsap.to(item, {
-  //         scale: isLast ? 1 : 0.7 + 0.2 * (i / (items.length - 1)),
-  //         ease: "none",
-  //         scrollTrigger: {
-  //           trigger: item,
-  //           start: () => getStartValue(),
-  //           endTrigger: contentRef.current,
-  //           scrub: true,
-  //           pin: item,
-  //           pinSpacing: false,
-  //           invalidateOnRefresh: true,
-  //         },
-  //       });
-
-  //       ScrollTrigger.getById(tween.scrollTrigger?.vars.id ?? "");
-  //       if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
-  //     });
-
-  //     ScrollTrigger.refresh();
-  //   };
-
-  //   if (document.readyState === "complete") {
-  //     requestAnimationFrame(initAnimations);
-  //   } else {
-  //     window.addEventListener("load", initAnimations, { once: true });
-  //   }
-  // }, []);
 
   useGSAP(() => {
     if (!contentRef.current) return;
