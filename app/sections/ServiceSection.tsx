@@ -5,7 +5,7 @@ import { services } from "@/lib/services";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import EntryBottom from "@/components/animation/EntryBottom";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 export default function ServiceSection() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -52,22 +52,26 @@ export default function ServiceSection() {
 
   // Image enter animation
   useEffect(() => {
-    if (!imageWrapperRef.current) return;
+    const ctx = gsap.context(() => {
+      if (!imageWrapperRef.current) return;
 
-    const firstImage = imageWrapperRef.current!.children[0];
+      const firstImage = imageWrapperRef.current!.children[0];
 
-    gsap.from(firstImage, {
-      scale: 1.2,
-      opacity: 0,
-      duration: 3,
-      ease: "expo.out",
-      scrollTrigger: {
-        trigger: firstImage,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
+      gsap.from(firstImage, {
+        scale: 1.2,
+        opacity: 0,
+        duration: 3,
+        ease: "expo.out",
+        scrollTrigger: {
+          trigger: firstImage,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
     });
-  }, []);
+
+    return () => ctx.revert();
+  });
 
   // Image change animation
   useEffect(() => {
@@ -190,6 +194,9 @@ export default function ServiceSection() {
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       className="object-cover"
                       loading="eager"
+                      onLoadingComplete={() => {
+                        ScrollTrigger.refresh();
+                      }}
                     />
                   </div>
                 )}
@@ -202,6 +209,9 @@ export default function ServiceSection() {
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
                     loading="eager"
+                    onLoadingComplete={() => {
+                      ScrollTrigger.refresh();
+                    }}
                   />
                 </div>
               </div>

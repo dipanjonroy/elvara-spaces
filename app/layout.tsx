@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import ModalLayout from "@/components/modals/ModalLayout";
 import Footer from "@/components/layout/Footer";
 import SmoothProvider from "@/components/animation/SmoothProvider";
+import SmoothWrapper from "@/components/animation/SmoothWrapper";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -29,10 +30,12 @@ export default function RootLayout({
         className={`${hostGrotesk.variable} antialiased`}
         cz-shortcut-listen="true"
       >
-        <Header />
-        {children}
+        <SmoothWrapper>
+          <Header />
+          {children}
 
-        <Footer />
+          <Footer />
+        </SmoothWrapper>
         <ModalLayout />
       </body>
     </html>
