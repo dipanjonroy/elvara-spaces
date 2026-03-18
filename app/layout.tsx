@@ -30,11 +30,9 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <Header />
-        <SmoothProvider>
-          {children}
+        {children}
 
-          <Footer />
-        </SmoothProvider>
+        <Footer />
         <ModalLayout />
       </body>
     </html>
