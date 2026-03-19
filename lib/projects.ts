@@ -10,7 +10,7 @@ export const projects: ProjectTypes[]=[
   {
     id:1,
     title: "Cozy Family Home Interior",
-    category:"Residential",
+    category:"residential",
     images:[
       "/projects/Residential/p1/Residential-project-1-1.jpg",
       "/projects/Residential/p1/Residential-project-1-2.jpg",
@@ -24,7 +24,7 @@ export const projects: ProjectTypes[]=[
   {
     id:2,
     title: "Luxury Retail Store Makeover",
-    category:"Commercial",
+    category:"commercial",
     images:[
       "/projects/Commercial/p1/Commercial-project-1-1.jpg",
       "/projects/Commercial/p1/Commercial-project-1-2.jpg",
@@ -38,7 +38,7 @@ export const projects: ProjectTypes[]=[
   {
     id:3,
     title: "Modern Modular Kitchen",
-    category:"Kitchen",
+    category:"kitchen",
     images:[
       "/projects/Kitchen/p1/Kitchen-project-1-1.jpg",
       "/projects/Kitchen/p1/Kitchen-project-1-2.jpg",
@@ -52,7 +52,7 @@ export const projects: ProjectTypes[]=[
   {
     id:4,
     title: "Functional Space Revamp",
-    category:"Remodeling",
+    category:"renovation",
     images:[
       "/projects/Remodeling/p1/Remodeling-project-1-1.jpg",
       "/projects/Remodeling/p1/Remodeling-project-1-2.jpg",
@@ -66,7 +66,7 @@ export const projects: ProjectTypes[]=[
   {
     id:5,
     title: "Contemporary Bedroom Redesign",
-    category:"Bedroom",
+    category:"bedroom",
     images:[
       "/projects/Bedroom/P1/Bedroom-project-1-1.jpg",
       "/projects/Bedroom/P1/Bedroom-project-1-2.jpg",
@@ -80,7 +80,7 @@ export const projects: ProjectTypes[]=[
   {
     id:6,
     title: "Premium Lounge & Reception Ceiling",
-    category:"Ceiling",
+    category:"ceiling",
     images:[
       "/projects/Ceiling/p1/Ceiling-project-1-1.jpg",
       "/projects/Ceiling/p1/Ceiling-project-1-2.jpg",
