@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { projects } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
-import ImageShutter from "@/components/animation/ImageShutter";
+import ProjectSkeleton from "@/components/skeletons/ProjectSkeleton";
 
 const TABS: string[] = [
   "all",
@@ -19,6 +19,8 @@ const TABS: string[] = [
 ];
 
 export default function ProjectsSection() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const [activeTab, setActiveTab] = useState<string>("all");
   const projectsRef = useRef<HTMLDivElement>(null);
 
@@ -28,6 +30,7 @@ export default function ProjectsSection() {
       : projects.filter((project) => activeTab === project.category);
 
   useGSAP(() => {
+    if (isLoading) return;
     const ctx = gsap.context(() => {
       if (!projectsRef.current) return;
 
@@ -45,7 +48,7 @@ export default function ProjectsSection() {
           projectsRef.current!.querySelectorAll(".projectCard"),
         );
 
-        cards.forEach((card, index) => {
+        cards.forEach((card) => {
           const cardInfo = card.querySelector(".projectText");
 
           gsap.set(card, { clipPath: "inset(0% 0% 100% 0%)" });
@@ -84,6 +87,10 @@ export default function ProjectsSection() {
     return () => ctx.revert();
   }, [filteredProjects]);
 
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2000);
+  });
+
   return (
     <section className="py-20 md:py-25 lg:30 relative z-3 bg-(--background)">
       <div className="container mx-auto">
@@ -112,28 +119,32 @@ export default function ProjectsSection() {
             ref={projectsRef}
             className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-9"
           >
-            {filteredProjects.map((item) => (
-              <Link key={item.id} href="#" className="projectCard">
-                <div className="relative w-full aspect-16/20 rounded-xl overflow-hidden group">
-                  <div className="absolute inset-0 transform origin-center transition-transform duration-500 ease-in-out group-hover:scale-110 ">
-                    <Image
-                      src={item.images[0]}
-                      alt={item.title}
-                      fill
-                      sizes="100vw"
-                      className="object-cover"
-                    />
-                  </div>
+            {isLoading
+              ? Array(6)
+                  .fill(0)
+                  .map((_, i) => <ProjectSkeleton key={i} />)
+              : filteredProjects.map((item) => (
+                  <Link key={item.id} href="#" className="projectCard">
+                    <div className="relative w-full aspect-16/20 rounded-xl overflow-hidden group">
+                      <div className="absolute inset-0 transform origin-center transition-transform duration-500 ease-in-out group-hover:scale-110 ">
+                        <Image
+                          src={item.images[0]}
+                          alt={item.title}
+                          fill
+                          sizes="(max-width:640px) 100vw, (max-width:1280px) 50vw, 33vw"
+                          className="object-cover"
+                        />
+                      </div>
 
-                  <div className="projectText absolute inset-x-5 bottom-5 bg-(--background) p-4 rounded-lg transform lg:translate-y-40 transition-transform duration-500 ease-in-out group-hover:lg:translate-y-0">
-                    <span className="capitalize opacity-60 text-sm">
-                      {item.category}
-                    </span>
-                    <h3 className="text-xl">{item.title}</h3>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                      <div className="projectText absolute inset-x-5 bottom-5 bg-(--background) p-4 rounded-lg transform lg:translate-y-40 transition-transform duration-500 ease-in-out group-hover:lg:translate-y-0">
+                        <span className="capitalize opacity-60 text-sm">
+                          {item.category}
+                        </span>
+                        <h3 className="text-xl">{item.title}</h3>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
           </div>
         </div>
       </div>
