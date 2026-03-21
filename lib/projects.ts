@@ -5,6 +5,8 @@ type ProjectTypes = {
   images:string[];
   location: string;
   slug:string;
+  clientName:string;
+  date:string;
 }
 
 export const projects: ProjectTypes[]=[
@@ -19,8 +21,10 @@ export const projects: ProjectTypes[]=[
       "/projects/Residential/p1/Residential-project-1-4.jpg",
       "/projects/Residential/p1/Residential-project-1-5.jpg",
     ],
-    location:"120 Front St W, Toronto, ON, Canada",
+    location:"Ontario, Canada",
     slug: "cozy-family-home-interior",
+    clientName:"Carter Residence",
+    date:"12 March, 2026"
   },
 
   {
@@ -34,8 +38,10 @@ export const projects: ProjectTypes[]=[
       "/projects/Commercial/p1/Commercial-project-1-4.jpg",
       "/projects/Commercial/p1/Commercial-project-1-5.jpg",
     ],
-    location:"1055 Canada Pl, Vancouver, BC, Canada",
+    location:"Vancouver, Canada",
     slug: "luxury-retail-store-makeover",
+    clientName:"Charlotte Evans",
+    date:"27 November, 2025"
   },
 
   {
@@ -49,8 +55,10 @@ export const projects: ProjectTypes[]=[
       "/projects/Kitchen/p1/Kitchen-project-1-4.jpg",
       "/projects/Kitchen/p1/Kitchen-project-1-5.jpg",
     ],
-    location:"1000 Rue De La Gauchetière O, Montreal, QC, Canada",
+    location:"Montreal, Canada",
     slug: "modern-modular-kitchen",
+    clientName:"The Anderson Residence",
+    date:"7 December, 2025"
   },
 
   {
@@ -64,8 +72,10 @@ export const projects: ProjectTypes[]=[
       "/projects/Remodeling/p1/Remodeling-project-1-4.jpg",
       "/projects/Remodeling/p1/Remodeling-project-1-5.jpg",
     ],
-    location:"800 9 Ave SW, Calgary, AB, Canada",
+    location:"Calgary, Canada",
     slug: "functional-space-revamp",
+    clientName:"Bennett House",
+    date:"21 January, 2026"
   },
 
   {
@@ -79,8 +89,10 @@ export const projects: ProjectTypes[]=[
       "/projects/Bedroom/P1/Bedroom-project-1-4.jpg",
       "/projects/Bedroom/P1/Bedroom-project-1-5.jpg",
     ],
-    location:"111 Wellington St, Ottawa, ON, Canada",
+    location:"Ottawa, Canada",
     slug: "contemporary-bedroom-redesign",
+    clientName:"Walker Family Home",
+    date:"3 February, 2026"
   },
 
   {
@@ -94,7 +106,9 @@ export const projects: ProjectTypes[]=[
       "/projects/Ceiling/p1/Ceiling-project-1-4.jpg",
       "/projects/Ceiling/p1/Ceiling-project-1-5.jpg",
     ],
-    location:"300 Main St, Whitehorse, YT, Canada",
+    location:"Whitehorse, Canada",
     slug: "premium-lounge-reception-ceiling",
+    clientName:"The Thompson Villa",
+    date:"03 March, 2026"
   },
 ]

@@ -124,7 +124,7 @@ export default function ProjectsSection() {
                   .fill(0)
                   .map((_, i) => <ProjectSkeleton key={i} />)
               : filteredProjects.map((item) => (
-                  <Link key={item.id} href="#" className="projectCard">
+                  <Link key={item.id} href={`/projects/${item.slug}`} className="projectCard">
                     <div className="relative w-full aspect-16/20 rounded-xl overflow-hidden group">
                       <div className="absolute inset-0 transform origin-center transition-transform duration-500 ease-in-out group-hover:scale-110 ">
                         <Image
