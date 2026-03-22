@@ -1,5 +1,6 @@
 "use client";
 
+import HeroTextStagger from "@/components/animation/HeroTextStagger";
 import ImageShutter from "@/components/animation/ImageShutter";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
@@ -23,11 +24,13 @@ export default function SingleProjectHeroSection({
   project: ProjectType;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      if (!infoRef.current || !sectionRef.current) return;
+      if (!infoRef.current || !sectionRef.current || !headingRef.current)
+        return;
 
       gsap.to(infoRef.current, {
         y: 0,
@@ -43,14 +46,9 @@ export default function SingleProjectHeroSection({
         },
       });
 
-      tl.to(infoRef.current, { y: -160, ease: "none" }, 0).to(
-        sectionRef.current,
-        {
-          y: 160,
-          ease: "none",
-        },
-        0,
-      );
+      tl.to(headingRef.current, { y: -100, ease: "none" }, 0)
+        .to(infoRef.current, { y: -160, ease: "none" }, 0)
+        .to(sectionRef.current, { y: 160, ease: "none" }, 0);
     });
 
     return () => ctx.revert();
@@ -75,9 +73,16 @@ export default function SingleProjectHeroSection({
         <div
           ref={infoRef}
           style={{ transform: "translateY(200px)", willChange: "transform" }}
-          className="absolute inset-x-0 bottom-14"
+          className="absolute inset-x-0 bottom-14 z-3"
         >
-          <div className="container mx-auto w-full h-full flex items-end">
+          <div className="container mx-auto w-full h-full space-y-5">
+            <div ref={headingRef}>
+              <HeroTextStagger
+                text={project?.title}
+                delay={1.1}
+                className="text-(--background)"
+              />
+            </div>
             <div className="w-full rounded-2xl p-10 bg-(--foreground)/10 backdrop-blur-sm border border-(--white-border)">
               <div className="w-full flex flex-col sm:flex-row flex-wrap items-start justify-between gap-8">
                 <div className="flex items-center gap-5">
@@ -123,6 +128,8 @@ export default function SingleProjectHeroSection({
             </div>
           </div>
         </div>
+
+        <div className="absolute bottom-0 inset-x-0 h-1/2 bg-linear-to-t from-(--foreground) to-transparent" />
       </ImageShutter>
     </section>
   );
