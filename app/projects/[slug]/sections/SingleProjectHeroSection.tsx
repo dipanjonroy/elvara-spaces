@@ -8,14 +8,13 @@ import Image from "next/image";
 import { useRef } from "react";
 
 type ProjectType = {
-  id: number;
   title: string;
   category: string;
   images: string[];
   location: string;
-  slug: string;
   clientName: string;
-  date: string;
+  area: string;
+  duration: string;
 };
 
 export default function SingleProjectHeroSection({
@@ -32,8 +31,8 @@ export default function SingleProjectHeroSection({
       if (!infoRef.current || !sectionRef.current || !headingRef.current)
         return;
 
-      gsap.to(infoRef.current, {
-        y: 0,
+      gsap.from(infoRef.current, {
+        y: 200,
         delay: 1,
         ease: "power1.out",
       });
@@ -46,9 +45,9 @@ export default function SingleProjectHeroSection({
         },
       });
 
-      tl.to(headingRef.current, { y: -100, ease: "none" }, 0)
-        .to(infoRef.current, { y: -160, ease: "none" }, 0)
-        .to(sectionRef.current, { y: 160, ease: "none" }, 0);
+      tl.to(headingRef.current, { y: -400, ease: "none" }, 0)
+        .to(infoRef.current, { y: -400, ease: "none" }, 0)
+        .to(sectionRef.current, { y: 300, ease: "none" }, 0);
     });
 
     return () => ctx.revert();
@@ -57,7 +56,7 @@ export default function SingleProjectHeroSection({
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-25 lg:py-30 w-full h-svh overflow-hidden"
+      className="relative py-20 md:py-25 lg:py-30 w-full h-svh"
     >
       <ImageShutter className="absolute inset-0">
         <div className="w-full h-full relative">
@@ -70,11 +69,7 @@ export default function SingleProjectHeroSection({
           />
         </div>
 
-        <div
-          ref={infoRef}
-          style={{ transform: "translateY(200px)", willChange: "transform" }}
-          className="absolute inset-x-0 bottom-14 z-3"
-        >
+        <div className="absolute inset-x-0 bottom-14 z-3">
           <div className="container mx-auto w-full h-full space-y-5">
             <div ref={headingRef}>
               <HeroTextStagger
@@ -83,7 +78,11 @@ export default function SingleProjectHeroSection({
                 className="text-(--background)"
               />
             </div>
-            <div className="w-full rounded-2xl p-10 bg-(--foreground)/10 backdrop-blur-sm border border-(--white-border)">
+            <div
+              ref={infoRef}
+              style={{ willChange: "transform" }}
+              className="w-full rounded-2xl p-10 bg-(--foreground)/10 backdrop-blur-sm border border-(--white-border)"
+            >
               <div className="w-full flex flex-col sm:flex-row flex-wrap items-start justify-between gap-8">
                 <div className="flex items-center gap-5">
                   <div className="w-px h-15 bg-(--background)" />
@@ -108,7 +107,7 @@ export default function SingleProjectHeroSection({
                 <div className="flex items-center gap-5">
                   <div className="w-px h-15 bg-(--background)" />
                   <div className="text-(--background)">
-                    <span className="block font-thin text-sm">Service</span>
+                    <span className="block font-thin text-sm">Type</span>
                     <span className="font-semibold text-xl capitalize">
                       {project?.category}
                     </span>
@@ -118,9 +117,19 @@ export default function SingleProjectHeroSection({
                 <div className="flex items-center gap-5">
                   <div className="w-px h-15 bg-(--background)" />
                   <div className="text-(--background)">
-                    <span className="block font-thin text-sm">Date</span>
+                    <span className="block font-thin text-sm">Area</span>
                     <span className="font-semibold text-xl capitalize">
-                      {project?.date}
+                      {project?.area}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-5">
+                  <div className="w-px h-15 bg-(--background)" />
+                  <div className="text-(--background)">
+                    <span className="block font-thin text-sm">Duration</span>
+                    <span className="font-semibold text-xl capitalize">
+                      {project?.duration}
                     </span>
                   </div>
                 </div>

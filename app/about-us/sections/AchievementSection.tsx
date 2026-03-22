@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollTextReveal from "@/components/animation/ScrollTextReveal";
 import Achievements from "@/components/shared/Achievements";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
@@ -39,24 +40,10 @@ export default function AchievementSection() {
       <div className="bg-(--foreground) py-20 lg:py-22 xl:py-30">
         <div className="container mx-auto">
           <div className="flex flex-col items-center w-full max-w-300 mx-auto gap-16">
-            <h2
-              ref={headingRef}
+            <ScrollTextReveal
+              text={HEADINGTEXT}
               className="text-center text-(--background) leading-tight"
-            >
-              {HEADINGTEXT.split(" ").map((word, i) => (
-                <span key={i} className="inline-block me-4">
-                  {word.split("").map((char, charIndex) => (
-                    <span
-                      key={charIndex}
-                      className="char inline-block"
-                      style={{ opacity: 0.3, willChange: "opacity" }}
-                    >
-                      {char}
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </h2>
+            />
 
             <Achievements
               className="flex flex-col sm:flex-row text-center items-center justify-center gap-16 sm:gap-8 lg:gap-18 xl:gap-24"

@@ -1,5 +1,7 @@
 import { projects } from "@/lib/projects";
 import SingleProjectHeroSection from "./sections/SingleProjectHeroSection";
+import ProjectDescriptionSection from "./sections/ProjectDescriptionSection";
+import CTASection from "@/app/sections/CTASection";
 
 export async function generateMetadata({
   params,
@@ -33,6 +35,8 @@ export default async function page({
   return (
     <>
       <SingleProjectHeroSection project={project} />
+      <ProjectDescriptionSection project={project}/>
+      <CTASection/>
     </>
   );
 }
