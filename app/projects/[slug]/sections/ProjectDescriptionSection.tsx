@@ -1,4 +1,3 @@
-import EntryBottom from "@/components/animation/EntryBottom";
 import ProjectStoryItem from "../components/ProjectStoryItem";
 import ScrollTextReveal from "@/components/animation/ScrollTextReveal";
 
