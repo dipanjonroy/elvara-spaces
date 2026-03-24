@@ -29,13 +29,15 @@ export default function RootLayout({
         className={`${hostGrotesk.variable} antialiased`}
         cz-shortcut-listen="true"
       >
-        <SmoothWrapper>
-          <Header />
-          {children}
+        <main>
+          <SmoothWrapper>
+            <Header />
+            {children}
 
-          <Footer />
-        </SmoothWrapper>
-        <ModalLayout />
+            <Footer />
+          </SmoothWrapper>
+          <ModalLayout />
+        </main>
       </body>
     </html>
   );
