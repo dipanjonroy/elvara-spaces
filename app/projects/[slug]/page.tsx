@@ -2,6 +2,7 @@ import { projects } from "@/lib/projects";
 import SingleProjectHeroSection from "./sections/SingleProjectHeroSection";
 import ProjectDescriptionSection from "./sections/ProjectDescriptionSection";
 import CTASection from "@/app/sections/CTASection";
+import SingleProjectSkeleton from "@/components/skeletons/SingleProjectSkeleton";
 
 export async function generateMetadata({
   params,
@@ -15,9 +16,9 @@ export async function generateMetadata({
   );
 
   return {
-    title:`${project?.title} | Elvara Spaces`,
-    description:"Project Description Here"
-  }
+    title: `${project?.title} | Elvara Spaces`,
+    description: "Project Description Here",
+  };
 }
 
 export default async function page({
@@ -35,8 +36,8 @@ export default async function page({
   return (
     <>
       <SingleProjectHeroSection project={project} />
-      <ProjectDescriptionSection project={project}/>
-      <CTASection/>
+      <ProjectDescriptionSection project={project} />
+      <CTASection />
     </>
   );
 }
