@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactHero from "./sections/ContactHero";
 import ContactInfo from "@/app/contact-us/sections/ContactInfo";
+import CTASection from "../sections/CTASection";
 
 export const metadata: Metadata = {
   title: "Contact us | Elvara Spaces",
@@ -13,6 +14,7 @@ export default function page() {
     <>
       <ContactHero />
       <ContactInfo />
+      <CTASection/>
     </>
   );
 }
