@@ -5,7 +5,7 @@ import SelectChecklist from "@/components/ui/SelectChecklist";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import TextArea from "@/components/ui/TextArea";
 import { useState } from "react";
-import { isEmpty } from "@/helper/ValidateForm";
+import { isEmail, isEmpty } from "@/helper/ValidateForm";
 import { toast } from "@/components/toast/Toast";
 
 const PROJECT_TYPE = [
@@ -49,11 +49,57 @@ export default function ContactInforForm() {
   // Handle submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     // Validate form
-    if(isEmpty(formData.name)){
-      toast.error("Please enter your name")
+    if (isEmpty(formData.name)) {
+      toast.error("Please enter your name");
+      return;
     }
+
+    if (isEmpty(formData.email)) {
+      toast.error("Please enter the email.");
+      return;
+    } else if (!isEmail(formData.email)) {
+      toast.error("Please enter a valid email");
+      return;
+    }
+
+    if (isEmpty(formData.phone)) {
+      toast.error("Please enter the phone number");
+      return;
+    }
+
+    if (isEmpty(formData.projectDetails)) {
+      toast.error("Please write about your project");
+      return;
+    }
+
+    if (isEmpty(formData.types)) {
+      toast.error("Please select project type");
+      return;
+    }
+
+    if (isEmpty(formData.budget)) {
+      toast.error("Please select project budget");
+      return;
+    }
+
+    // Get the payload ready
+    const payload = {
+      personalDetails: {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+      },
+      projectDetails: {
+        aboutProject: formData.company,
+        types: formData.types,
+        budget: formData.budget,
+      },
+    };
+
+    console.log(payload)
   };
 
   return (
@@ -68,15 +114,16 @@ export default function ContactInforForm() {
             name="name"
             placeholder="Write your name"
             type="text"
-            onChange={(e)=>setFormData({...formData, name:e.target.value})}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required={true}
           />
           <InputField
             label="Email"
             name="email"
             placeholder="Email address"
-            type="email"
-            onChange={(e)=>setFormData({...formData, email:e.target.value})}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             required={true}
           />
           <InputField
@@ -84,7 +131,9 @@ export default function ContactInforForm() {
             name="phone"
             placeholder="Phone number"
             type="text"
-            onChange={(e)=>setFormData({...formData, phone:e.target.value})}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
             required={true}
           />
           <InputField
@@ -92,7 +141,9 @@ export default function ContactInforForm() {
             name="company"
             placeholder="Company name here"
             type="text"
-            onChange={(e)=>setFormData({...formData, company:e.target.value})}
+            onChange={(e) =>
+              setFormData({ ...formData, company: e.target.value })
+            }
           />
         </div>
       </div>
@@ -107,7 +158,9 @@ export default function ContactInforForm() {
             name="aboutProject"
             placeholder="Write us about projects"
             required={true}
-            onChange={(e)=>setFormData({...formData, projectDetails:e.target.value})}
+            onChange={(e) =>
+              setFormData({ ...formData, projectDetails: e.target.value })
+            }
           />
 
           <SelectChecklist
