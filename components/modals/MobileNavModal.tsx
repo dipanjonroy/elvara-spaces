@@ -112,7 +112,7 @@ export default function MobileNavModal() {
           </button>
         </div>
 
-        <MobileMenu ref={menuRef} />
+        <MobileMenu ref={menuRef} closeMenu={handleCloseMenu} />
 
         <div ref={btnRef} className="mt-20">
           <MainButton onClick={() => console.log("Main button clicked")} />

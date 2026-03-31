@@ -4,18 +4,20 @@ interface PrimaryBtnProps {
   name: string;
   className?: string;
   iconClass?: string;
-  onClick: () => void;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
 export default function PrimaryButton({
   name,
   className,
   iconClass,
+  type = "button",
   onClick,
 }: PrimaryBtnProps) {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       className={`${className} inline-flex items-center gap-2 ps-6 pe-3 py-3 rounded-full cursor-pointer overflow-hidden group`}
     >

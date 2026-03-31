@@ -7,11 +7,13 @@ import { useGSAP } from "@gsap/react";
 type ImageShutterProps = {
   children: React.ReactNode;
   className: string;
+  delay?:number;
 };
 
 export default function ImageShutter({
   children,
   className,
+  delay
 }: ImageShutterProps) {
   const imageRef = useRef<HTMLDivElement>(null);
 
@@ -25,6 +27,7 @@ export default function ImageShutter({
         {
           clipPath: "inset(0% 0% 0% 0%)",
           duration: 1.8,
+          delay,
           ease: "power3.out",
           scrollTrigger: {
             trigger: imageRef.current,

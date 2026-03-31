@@ -8,43 +8,44 @@ import { IoMenuOutline } from "react-icons/io5";
 import MobileNavModal from "../modals/MobileNavModal";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const { openModal } = useModalStore();
   const sectionRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const pathName = usePathname();
 
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
 
-      if (sectionRef.current) {
-        tl.fromTo(
-          navRef.current,
-          {
-            width: "40%",
-          },
-          {
-            width: "100%",
-            duration: 2,
-            ease: "power3.out",
-          },
-        );
-      }
+    if (sectionRef.current) {
+      tl.fromTo(
+        navRef.current,
+        {
+          width: "40%",
+        },
+        {
+          width: "100%",
+          duration: 2,
+          ease: "power3.out",
+        },
+      );
+    }
 
-      if(menuRef.current){
-        tl.fromTo(
-          menuRef.current,
-          {opacity:0, display:"none"},
-          {opacity:1,display:"block", duration:0.5, ease:"power3.inOut"},
-          "-=0.3"
-        )
-      }
-    },
-    { scope: sectionRef },
-  );
+    if (menuRef.current) {
+      tl.fromTo(
+        menuRef.current,
+        { opacity: 0, display: "none" },
+        { opacity: 1, display: "block", duration: 0.5, ease: "power3.inOut" },
+        "-=0.3",
+      );
+    }
+
+    ScrollTrigger.refresh();
+  }, [pathName]);
 
   return (
     <header ref={sectionRef} className="fixed inset-x-0 z-10 top-4">

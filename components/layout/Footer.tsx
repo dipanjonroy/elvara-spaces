@@ -4,12 +4,10 @@ import Link from "next/link";
 import SocialMedia from "../shared/SocialMedia";
 import Logo from "../ui/Logo";
 import { menus } from "@/lib/menus";
-import gsap from "gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/all";
-
-gsap.registerPlugin(ScrollTrigger);
+import { usePathname } from "next/navigation";
 
 const SERVICES = [
   { id: 1, name: "Residential", url: "#" },
@@ -22,30 +20,32 @@ const SERVICES = [
 
 export default function Footer() {
   const largeTextRef = useRef<HTMLDivElement>(null);
+  const pathName = usePathname();
 
-  useGSAP(
-    () => {
-      const letters = gsap.utils.toArray(".letter");
+  useGSAP(() => {
+    const letters = gsap.utils.toArray(".letter");
 
-      gsap.fromTo(
-        letters,
-        { y: 50 },
-        {
-          y: 0,
-          duration: 0.8,
-          ease: "power3.inOut",
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: largeTextRef.current,
-            start: "top bottom",
-            end: "bottom 90%",
-            scrub: 1.8,
-          },
+    gsap.fromTo(
+      letters,
+      { y: 50 },
+      {
+        y: 0,
+        duration: 0.8,
+        ease: "power3.inOut",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: largeTextRef.current,
+          start: "top bottom",
+          end: "bottom 90%",
+          scrub: 1.8,
+          invalidateOnRefresh: true,
         },
-      );
-    },
-    { scope: largeTextRef },
-  );
+      },
+    );
+
+    ScrollTrigger.refresh();
+  }, [pathName]);
+
   return (
     <footer className="lg:px-6 lg:pb-6">
       <div className="w-full h-full bg-(--foreground) rounded-tl-4xl rounded-tr-4xl lg:rounded-4xl py-16">
@@ -106,11 +106,11 @@ export default function Footer() {
           </div>
 
           {/* Business name */}
-          <div
-            ref={largeTextRef}
-            className="flex items-center justify-center mt-14"
-          >
-            <span className="text-4xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[150px] font-bold">
+          <div className="flex items-center justify-center mt-14">
+            <span
+              ref={largeTextRef}
+              className="text-4xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[150px] font-bold"
+            >
               {"ELVARA-SPACES".split("").map((char, i) => (
                 <span key={i} className="letter inline-block">
                   {char}
