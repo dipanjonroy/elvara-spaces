@@ -31,8 +31,8 @@ export default function BlogHeroSection() {
 
       gsap.set(sectionRef.current, { y: 0 });
 
-      tl.to(headingRef.current, { y: -100, ease: "none" }, 0);
-      tl.to(paraRef.current, { y: -100, ease: "none" }, 0);
+      tl.to(headingRef.current, { y: -200, ease: "none" }, 0);
+      tl.to(paraRef.current, { y: -200, ease: "none" }, 0);
       tl.to(sectionRef.current, { y: 200, marginTop: -200, ease: "none" }, 0);
     });
 
@@ -40,10 +40,7 @@ export default function BlogHeroSection() {
   });
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-svh 2xl:h-140 overflow-hidden"
-    >
+    <section ref={sectionRef} className="relative w-full h-svh">
       <ImageShutter className="w-full h-full relative">
         <div className="absolute inset-0">
           <div className="w-full h-full relative">
@@ -56,7 +53,7 @@ export default function BlogHeroSection() {
             />
           </div>
 
-          <div className="absolute inset-x-0 bottom-6">
+          <div className="absolute inset-x-0 bottom-10">
             <div className="container mx-auto">
               <div className="w-full max-w-160">
                 <div ref={headingRef}>

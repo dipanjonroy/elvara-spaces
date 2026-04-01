@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function ContactHeroSection() {
   return (
-    <section className="relative overflow-hidden w-full h-140">
+    <section className="relative overflow-hidden w-full h-svh">
       <ImageShutter className="absolute inset-0">
         <div className="w-full h-full relative">
           <Image
