@@ -1,6 +1,7 @@
 import BlogHero from "@/app/blogs/sections/BlogHero";
 import BlogArticles from "@/app/blogs/sections/BlogArticles";
 import type { Metadata } from "next";
+import CTASection from "../sections/CTASection";
 
 export const metadata:Metadata = {
   title:"Blogs | Elvara Spaces",
@@ -12,6 +13,7 @@ export default function page() {
     <>
       <BlogHero />
       <BlogArticles/>
+      <CTASection/>
     </>
   );
 }
