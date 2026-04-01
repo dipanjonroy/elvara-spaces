@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <SmoothWrapper>
           <Header />
-          <main className="w-full relative">{children}</main>
+          <main>{children}</main>
 
           <Footer />
         </SmoothWrapper>
