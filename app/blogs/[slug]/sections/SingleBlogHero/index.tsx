@@ -47,6 +47,7 @@ export default function SingleBlogHero({data}:{data:DataProps}) {
               fill
               sizes="100vw"
               className="object-cover"
+              priority
             />
           </div>
         </div>

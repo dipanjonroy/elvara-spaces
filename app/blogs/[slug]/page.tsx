@@ -38,6 +38,7 @@ export default async function page({
     <>
       <SingleBlogHero data={article}/>
       <SingleBlogDetails/>
+      
     </>
   );
 }
