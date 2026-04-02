@@ -1,7 +1,9 @@
+import EntryBottom from "@/components/animation/EntryBottom";
+
 export default function BlogDetailsContent() {
   return (
     <div className="w-full space-y-8">
-      <div className="space-y-4">
+      <EntryBottom className="space-y-4">
         <h3>Understanding the concept</h3>
         <p className="opacity-75">
           The first step in building a brand identity is to dive into the heart
@@ -20,9 +22,9 @@ export default function BlogDetailsContent() {
           brand’s identity. Our goal is to distill the essence of the brand into
           a clear purpose, which will guide all future decisions.
         </p>
-      </div>
+      </EntryBottom>
 
-      <div className="space-y-4">
+      <EntryBottom className="space-y-4">
         <h3>Strategy and positioning</h3>
         <p className="opacity-75">
           Once we have a solid understanding of the brand’s inner workings and
@@ -42,9 +44,9 @@ export default function BlogDetailsContent() {
           aspect of the identity with the brand’s purpose and audience
           expectations.
         </p>
-      </div>
+      </EntryBottom>
 
-      <div className="space-y-4">
+      <EntryBottom className="space-y-4">
         <h3>Creative development and design</h3>
         <p className="opacity-75">
           With a defined strategy in place, we move into the creative
@@ -65,9 +67,9 @@ export default function BlogDetailsContent() {
           concepts, gathering feedback, and iterating on ideas until we have a
           visual identity that perfectly encapsulates the brand.
         </p>
-      </div>
+      </EntryBottom>
 
-      <div className="space-y-4">
+      <EntryBottom className="space-y-4">
         <h3>Conclusion</h3>
         <p className="opacity-75">
           Creating an impactful brand identity is a journey that goes far beyond
@@ -79,7 +81,7 @@ export default function BlogDetailsContent() {
           approach isn’t just about design; it’s about crafting identities that
           truly resonate.
         </p>
-      </div>
+      </EntryBottom>
     </div>
   );
 }
