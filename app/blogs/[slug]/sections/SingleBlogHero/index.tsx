@@ -29,7 +29,7 @@ export default function SingleBlogHero({data}:{data:DataProps}) {
       });
 
       tl.to(headingRef.current,{y:-160,ease:"none"},0);
-      tl.to(sectionRef.current,{y:200,ease:"none"},0);
+      tl.to(sectionRef.current,{y:200,marginTop:-200,ease:"none"},0);
     });
 
     return ()=>ctx.revert();
