@@ -1,5 +1,6 @@
 import { articlesData } from "@/lib/articles";
 import SingleBlogHero from "./sections/SingleBlogHero";
+import SingleBlogDetails from "./sections/SingleBlogDetails";
 
 export async function generateMetadata({
   params,
@@ -36,6 +37,7 @@ export default async function page({
   return (
     <>
       <SingleBlogHero data={article}/>
+      <SingleBlogDetails/>
     </>
   );
 }
