@@ -9,12 +9,12 @@ type ArticleProps = {
   desc: string;
   category: string;
   image: string;
-  index?: number;
+  slug: string;
 };
 
 export default function ArticleCard({ article }: { article: ArticleProps }) {
   return (
-    <Link href="#" className="w-full">
+    <Link href={`/blogs/${article.slug}`}className="w-full">
       <div className="bg-(--foreground)/8 p-6 lg:p-5 xl:p-8 rounded-3xl group">
         <div className="w-full space-y-7">
           <div className="relative">

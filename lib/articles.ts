@@ -4,6 +4,7 @@ type ArticleProps = {
   desc: string;
   category: string;
   image: string;
+  slug:string;
 };
 
 export const articlesData: ArticleProps[] = [
@@ -13,6 +14,7 @@ export const articlesData: ArticleProps[] = [
     desc: "Learn how thoughtful space planning can make compact homes feel open, functional, and comfortable without adding extra square footage.",
     category: "Small Space Design",
     image: "/articles/ArticleOne.jpg",
+    slug:"how-smart-layout-planning-transforms-small-homes"
   },
   {
     id: 2,
@@ -20,6 +22,7 @@ export const articlesData: ArticleProps[] = [
     desc: "From budget overruns to poor material choices, discover the common renovation mistakes and how proper planning saves time and cost.",
     category: "Home Renovation",
     image: "/articles/ArticleTwo.jpg",
+    slug: "what-most-renovations-get-wrong-and-how-to-avoid-it",
   },
   {
     id: 3,
@@ -27,5 +30,6 @@ export const articlesData: ArticleProps[] = [
     desc: "A practical guide to kitchen design focusing on workflow, storage, and everyday usability—not just visual appeal.",
     category: "Kitchen Design",
     image: "/articles/ArticleThree.jpg",
+    slug: "designing-kitchens-that-actually-work-for-daily-life",
   },
 ];
