@@ -5,7 +5,6 @@ import LinkButton from "@/components/ui/LinkButton";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useRef } from "react";
-import Counter from "@/components/animation/Counter";
 import EntryBottom from "@/components/animation/EntryBottom";
 import ImageShutter from "@/components/animation/ImageShutter";
 import { gsap } from "@/lib/gsap";
