@@ -73,7 +73,7 @@ export default function AboutSection() {
                   name="Explore More"
                   className="bg-(--foreground) text-(--background)"
                   iconClass="bg-(--background) text-(--foreground)"
-                  path=""
+                  path="/about-us"
                 />
               </EntryBottom>
             </div>
