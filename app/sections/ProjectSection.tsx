@@ -90,7 +90,7 @@ export default function ProjectSection() {
             <EntryBottom className="mt-4 flex items-center justify-center">
               <LinkButton
                 name="View all projects"
-                path="#"
+                path="/projects"
                 className="bg-(--foreground) text-(--background)"
                 iconClass="bg-(--background) text-(--text-color)"
               />
