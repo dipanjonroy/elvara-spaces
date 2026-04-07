@@ -14,6 +14,7 @@ type SelectDropdownProps = {
   required?: boolean;
   icon?: React.ReactNode;
   values: OptionType[];
+  onChange?:(time:string)=>void;
 };
 
 export default function SelectDropdown({
@@ -22,6 +23,7 @@ export default function SelectDropdown({
   required = false,
   icon,
   values,
+  onChange
 }: SelectDropdownProps) {
   const [open, setOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<OptionType | null>(null);
@@ -31,6 +33,12 @@ export default function SelectDropdown({
   useClickOutside(optionsRef, () => {
     setOpen(false);
   });
+
+  const handleSelect = (option:OptionType)=>{
+    onChange?.(option.value);
+    setSelected(option);
+    setOpen(false);
+  }
 
   return (
     <div aria-label={ariaLabel} className="relative">
@@ -61,10 +69,7 @@ export default function SelectDropdown({
             <button
               key={idx}
               type="button"
-              onClick={() => {
-                setSelected(item);
-                setOpen(false);
-              }}
+              onClick={() => handleSelect(item)}
               className={`block w-full cursor-pointer text-left px-7 py-1.5 ${selected?.value === item.value ? "bg-(--foreground) text-(--background)" : "hover:bg-(--foreground)/50 hover:text-(--background)"}`}
             >
               {item.key}

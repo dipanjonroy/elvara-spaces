@@ -44,7 +44,6 @@ export default function ModalLayout() {
   // Disable body scrollbar
   useEffect(() => {
     if (isModalOpen) {
-      console.log(isModalOpen)
       const scrollBarWidth =
         window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";

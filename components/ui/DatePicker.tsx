@@ -1,22 +1,36 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import { SlCalender } from "react-icons/sl";
 import "react-day-picker/style.css";
 import useClickOutside from "@/hooks/useClickOutside";
 
-export default function DatePicker() {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    new Date(),
-  );
+type DatePickerProps = {
+  select?: Date | undefined;
+  setDate?: (date: Date) => void;
+};
+
+export default function DatePicker({ select, setDate }: DatePickerProps) {
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(select);
   const [open, setOpen] = useState<boolean>(false);
   const calenderRef = useRef<HTMLDivElement>(null);
 
   const today = new Date();
 
-  useClickOutside(calenderRef,()=>{
-    setOpen(false)
-  })
+  useClickOutside(calenderRef, () => {
+    setOpen(false);
+  });
+
+  useEffect(() => {
+    setDate?.(new Date());
+  }, []);
+
+  const handleSetDate = (date: Date | undefined) => {
+    if (!date) return;
+    setDate?.(date ?? new Date());
+    setSelectedDate(date);
+    setOpen(false);
+  };
 
   return (
     <div className="relative inline-block w-full ">
@@ -49,11 +63,7 @@ export default function DatePicker() {
             mode="single"
             selected={selectedDate}
             defaultMonth={selectedDate ?? new Date()}
-            onSelect={(date) => {
-              setSelectedDate(date);
-              setOpen(false);
-              console.log(date);
-            }}
+            onSelect={handleSetDate}
             navLayout="around"
             startMonth={today}
             classNames={{

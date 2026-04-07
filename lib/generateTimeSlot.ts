@@ -7,12 +7,12 @@ export const generateTimeSlot = () => {
 
     times.push({
       key: `${hour12}:00 ${ampm}`,
-      value: `${time.toString().padStart(2, "0")}:"00"`,
+      value: `${time.toString().padStart(2, "0")}:00`,
     });
 
     times.push({
       key: `${hour12}:30 ${ampm}`,
-      value: `${time.toString().padStart(2, "0")}:"30"`,
+      value: `${time.toString().padStart(2, "0")}:30`,
     });
   }
   return times;

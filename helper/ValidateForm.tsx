@@ -1,4 +1,4 @@
-const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 class ValidateForm {
   isEmpty(value: unknown): boolean {
@@ -10,11 +10,15 @@ class ValidateForm {
     return false;
   }
 
-  isEmail (value:string):boolean {
+  isEmail(value: string): boolean {
     return emailRegEx.test(value);
+  }
+
+  isDate(value: unknown): boolean {
+    return value instanceof Date && !isNaN(value.getTime());
   }
 }
 
 const formHelper = new ValidateForm();
 
-export const { isEmpty, isEmail } = formHelper;
+export const { isEmpty, isEmail, isDate } = formHelper;
