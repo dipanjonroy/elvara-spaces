@@ -3,7 +3,7 @@
 import { useModalStore } from "@/store/ModalStore";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ModalLayout() {
   const { isModalOpen, modal, align } = useModalStore();
@@ -41,6 +41,24 @@ export default function ModalLayout() {
     }
   }, [isModalOpen]);
 
+  // Disable body scrollbar
+  useEffect(() => {
+    if (isModalOpen) {
+      console.log(isModalOpen)
+      const scrollBarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    } else {
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
+    };
+  }, [isModalOpen]);
   return (
     <div
       ref={overlayRef}

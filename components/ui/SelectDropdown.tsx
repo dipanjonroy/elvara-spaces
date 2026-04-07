@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
 import useClickOutside from "@/hooks/useClickOutside";
 import { useRef, useState } from "react";
 
 type OptionType = {
-  key:string;
-  value:string;
-}
+  key: string;
+  value: string;
+};
 
 type SelectDropdownProps = {
   ariaLabel?: string;
@@ -26,11 +26,11 @@ export default function SelectDropdown({
   const [open, setOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<OptionType | null>(null);
 
-  const optionsRef= useRef<HTMLDivElement>(null);
+  const optionsRef = useRef<HTMLDivElement>(null);
 
-  useClickOutside(optionsRef,()=>{
-    setOpen(false)
-  })
+  useClickOutside(optionsRef, () => {
+    setOpen(false);
+  });
 
   return (
     <div aria-label={ariaLabel} className="relative">
@@ -52,7 +52,11 @@ export default function SelectDropdown({
 
       {/* DropDown */}
       {open && (
-        <div ref={optionsRef} className="absolute bottom-0 rounded-lg w-full shadow-lg bg-(--background) z-1 max-h-50 overflow-y-auto">
+        <div
+          ref={optionsRef}
+          data-lenis-prevent
+          className="absolute bottom-0 rounded-lg w-full shadow-lg bg-(--background) z-1 max-h-50 overflow-y-auto"
+        >
           {values?.map((item, idx) => (
             <button
               key={idx}
