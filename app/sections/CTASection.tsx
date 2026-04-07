@@ -4,8 +4,11 @@ import PrimaryButton from "@/components/ui/PrimaryButton";
 import Image from "next/image";
 import ImageShutter from "@/components/animation/ImageShutter";
 import EntryBottom from "@/components/animation/EntryBottom";
+import { useModalStore } from "@/store/ModalStore";
+import BookingModal from "@/components/modals/BookingModal";
 
 export default function CTASection() {
+  const {openModal} = useModalStore();
   return (
     <section className="py-20 md:py-25 lg:py-30">
       <div className="container mx-auto">
@@ -27,7 +30,7 @@ export default function CTASection() {
                   name="Get Free Consultation"
                   className="bg-(--background) text-(--text-color)"
                   iconClass="bg-(--foreground) text-(--background)"
-                  onClick={() => console.log("Clicked")}
+                  onClick={() => openModal("bookingModal",<BookingModal/>,"center")}
                 />
               </EntryBottom>
             </div>

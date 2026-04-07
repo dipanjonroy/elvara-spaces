@@ -11,10 +11,13 @@ import heroImage from "@/public/Hero-Image.jpg";
 import ImageShutter from "@/components/animation/ImageShutter";
 import HeroTextStagger from "@/components/animation/HeroTextStagger";
 import Reveal from "@/components/animation/Reveal";
+import { useModalStore } from "@/store/ModalStore";
+import BookingModal from "@/components/modals/BookingModal";
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const {openModal} = useModalStore();
 
   const heroText =
     "Functional, Elegant & Fully Customized Interiors — Residential to Commercial";
@@ -69,7 +72,7 @@ export default function HeroSection() {
 
                   <Reveal delay={2.2}>
                     <PrimaryButton
-                      onClick={() => console.log("Btn Clicked")}
+                      onClick={() => openModal("bookingModal",<BookingModal/>,"center")}
                       name="Book Free Consultation"
                       className="bg-(--background) text-(--text-color) mt-6 lg:mt-8"
                       iconClass="bg-(--foreground) text-(--background)"
