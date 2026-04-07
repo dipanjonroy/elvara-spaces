@@ -1,3 +1,5 @@
+"use client"
+
 import { IoMdClose } from "react-icons/io";
 import InputField from "../ui/InputField";
 import DatePicker from "../ui/DatePicker";
@@ -5,12 +7,22 @@ import SelectDropdown from "../ui/SelectDropdown";
 import { generateTimeSlot } from "@/lib/generateTimeSlot";
 import PrimaryButton from "../ui/PrimaryButton";
 import { SlClock } from "react-icons/sl";
+import { useRef } from "react";
+import { useModalStore } from "@/store/ModalStore";
+import useClickOutside from "@/hooks/useClickOutside";
 
 export default function BookingModal() {
+
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const {closeModal} = useModalStore()
+
+  useClickOutside(modalRef,closeModal)
+
   return (
-    <div className="w-full min-w-100 lg:min-w-140 bg-(--background) p-8 rounded-xl relative">
+    <div ref={modalRef} className="w-full min-w-100 lg:min-w-140 bg-(--background) p-8 rounded-xl relative">
       <div className="absolute right-3 top-3">
-        <button className="w-6 h-6 bg-red-600 text-(--background) rounded-full flex items-center justify-center cursor-pointer">
+        <button onClick={closeModal} className="w-6 h-6 bg-red-600 text-(--background) rounded-full flex items-center justify-center cursor-pointer">
           <IoMdClose />
         </button>
       </div>
