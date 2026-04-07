@@ -17,9 +17,9 @@ export default function BookingModal() {
 
       {/* Form area */}
       <div className="space-y-6 pt-5">
-        <h3 className="capitalize">Book 30mins free consultation</h3>
-
-        <form className="mt-10">
+        <h4 className="capitalize">Book 30mins free consultation</h4>
+        <span className="w-full h-px bg-(--foreground) block"/>
+        <form className="mt-5">
           <div className="space-y-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <InputField
