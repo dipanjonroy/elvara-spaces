@@ -16,10 +16,10 @@ export default function BookingModal() {
       </div>
 
       {/* Form area */}
-      <div className="space-y-6">
+      <div className="space-y-6 pt-5">
         <h3 className="capitalize">Book 30mins free consultation</h3>
 
-        <form>
+        <form className="mt-10">
           <div className="space-y-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <InputField
@@ -59,7 +59,12 @@ export default function BookingModal() {
               />
             </div>
 
-            
+            <PrimaryButton
+              type="submit"
+              name="Book Now"
+              className="bg-(--foreground) text-(--background) mt-4"
+              iconClass="bg-(--background) text-(--foreground)"
+            />
           </div>
         </form>
       </div>
