@@ -10,6 +10,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { usePathname } from "next/navigation";
+import BookingModal from "../modals/BookingModal";
 
 export default function Header() {
   const { openModal } = useModalStore();
@@ -63,7 +64,9 @@ export default function Header() {
 
             <MainButton
               className="hidden lg:inline-block"
-              onClick={() => console.log("Open booking modal")}
+              onClick={() => {
+                openModal("bookingModal",<BookingModal/>,"center")
+              }}
             />
 
             {/* Mobilemenu open button */}

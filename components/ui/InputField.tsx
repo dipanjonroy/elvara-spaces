@@ -33,7 +33,7 @@ export default function InputField({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className="w-full border border-(--black-border) text-sm px-4 py-3 rounded-md focus:outline-none"
+        className="w-full border border-(--black-border) text-sm px-4 h-10 rounded-md focus:outline-none"
       />
     </div>
   );
