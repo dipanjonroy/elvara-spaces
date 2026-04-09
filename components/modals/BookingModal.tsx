@@ -93,10 +93,7 @@ export default function BookingModal() {
     });
   };
 
-  if (isPending) {
-    return <p>Loading</p>;
-  }
-
+  
   return (
     <div
       ref={modalRef}
@@ -184,7 +181,10 @@ export default function BookingModal() {
               name="Book Now"
               className="bg-(--foreground) text-(--background) mt-4"
               iconClass="bg-(--background) text-(--foreground)"
+              loading={isPending}
             />
+
+            
           </div>
         </form>
       </div>

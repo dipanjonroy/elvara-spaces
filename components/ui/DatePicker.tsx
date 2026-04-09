@@ -66,6 +66,7 @@ export default function DatePicker({ select, setDate }: DatePickerProps) {
             onSelect={handleSetDate}
             navLayout="around"
             startMonth={today}
+            disabled={{ before: new Date() }}
             classNames={{
               selected: `bg-(--foreground) text-white border border-(--foreground) transition-none`,
               today: selectedDate
