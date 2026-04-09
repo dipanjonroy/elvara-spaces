@@ -29,8 +29,6 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log(bookingDate, new Date())
-
     if (bookingDate < new Date()) {
       return NextResponse.json(
         {
@@ -105,14 +103,13 @@ export async function POST(request: Request) {
       dateTime,
     };
 
-    const newSchedule = await ScheduleModel.create(dbPayload)
-    //
+    await ScheduleModel.create(dbPayload);
+    
 
     // Returning Final response
     return NextResponse.json(
       {
         success: true,
-        newSchedule,
         message: "New booking created successfully",
       },
 

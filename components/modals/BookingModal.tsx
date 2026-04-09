@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import InputField from "../ui/InputField";
 import DatePicker from "../ui/DatePicker";
 import SelectDropdown from "../ui/SelectDropdown";
-import { generateTimeSlot } from "@/lib/generateTimeSlot";
+import { generateTimeSlot } from "@/helper/generateTimeSlot";
 import PrimaryButton from "../ui/PrimaryButton";
 import { SlClock } from "react-icons/sl";
 import { useRef, useState } from "react";
@@ -12,20 +12,16 @@ import { useModalStore } from "@/store/ModalStore";
 import useClickOutside from "@/hooks/useClickOutside";
 import { isEmail, isEmpty, isDate } from "@/helper/ValidateForm";
 import { toast } from "../toast/Toast";
-
-type FormDataProps = {
-  fname: string;
-  lname?: string;
-  email: string;
-  phone: string;
-  date: Date | undefined;
-  time: string;
-};
+import { ScheduleResponseType, ScheduleType } from "@/types/ScheduleType";
+import { useCreateSchedule } from "@/query/schedule/useCreateSchedule";
+import { mergeDateAndTime } from "@/helper/mergeDateAndTime";
+import { ApiResponse } from "@/types/ApiResponse";
 
 export default function BookingModal() {
+  const { mutate, isPending } = useCreateSchedule();
   const modalRef = useRef<HTMLDivElement>(null);
   const { closeModal } = useModalStore();
-  const [formData, setFormData] = useState<FormDataProps>({
+  const [formData, setFormData] = useState<ScheduleType>({
     fname: "",
     lname: "",
     email: "",
@@ -68,17 +64,38 @@ export default function BookingModal() {
       return;
     }
 
-    console.log(formData);
+    const payload = {
+      fname: formData.fname,
+      lname: formData.lname,
+      email: formData.email,
+      phone: formData.phone,
+      dateTime: mergeDateAndTime(
+        formData.date as Date,
+        formData.time as string,
+      ),
+    };
 
-    setFormData({
-      fname: "",
-      lname: "",
-      email: "",
-      phone: "",
-      date: new Date(),
-      time: "",
+    mutate(payload, {
+      onSuccess: (data: ApiResponse<ScheduleResponseType>) => {
+        toast.success(data?.message);
+        setFormData({
+          fname: "",
+          lname: "",
+          email: "",
+          phone: "",
+          date: new Date(),
+          time: "",
+        });
+      },
+      onError: (error: Error) => {
+        toast.error(error.message);
+      },
     });
   };
+
+  if (isPending) {
+    return <p>Loading</p>;
+  }
 
   return (
     <div
