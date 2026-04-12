@@ -1,4 +1,5 @@
 import { MdKeyboardArrowRight } from "react-icons/md";
+import Spinner from "./Spinner";
 
 interface PrimaryBtnProps {
   name: string;
@@ -23,20 +24,20 @@ export default function PrimaryButton({
       onClick={onClick}
       className={`${className} inline-flex items-center gap-2 ps-6 pe-3 py-3 rounded-full cursor-pointer overflow-hidden group`}
     >
+      {/* Text */}
+      <span className="relative h-6 overflow-hidden">
+        <span className="block text-base transition-transform duration-300 ease-in-out group-hover:-translate-y-full">
+          {name}
+        </span>
+        <span className="absolute inset-0 block text-base translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+          {name}
+        </span>
+      </span>
+
       {loading ? (
-        <span>Loading</span>
+        <Spinner className="border-t-white" />
       ) : (
         <>
-          {/* Text */}
-          <span className="relative h-6 overflow-hidden">
-            <span className="block text-base transition-transform duration-300 ease-in-out group-hover:-translate-y-full">
-              {name}
-            </span>
-            <span className="absolute inset-0 block text-base translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-              {name}
-            </span>
-          </span>
-
           {/* Arrow icon */}
           <span
             className={`relative w-6 h-6 rounded-full grid place-items-center overflow-hidden ${iconClass}`}
