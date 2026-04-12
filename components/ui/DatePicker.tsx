@@ -32,6 +32,12 @@ export default function DatePicker({ select, setDate }: DatePickerProps) {
     setOpen(false);
   };
 
+  // Disable dates
+  const disabledDates = [
+    {before:new Date()},
+    (date:Date)=>date.getDay() === 0,
+  ]
+
   return (
     <div className="relative inline-block w-full ">
       <label className="text-base font-medium capitalize">
@@ -66,7 +72,7 @@ export default function DatePicker({ select, setDate }: DatePickerProps) {
             onSelect={handleSetDate}
             navLayout="around"
             startMonth={today}
-            disabled={{ before: new Date() }}
+            disabled={disabledDates}
             classNames={{
               selected: `bg-(--foreground) text-white border border-(--foreground) transition-none`,
               today: selectedDate
