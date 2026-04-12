@@ -180,7 +180,7 @@ export default function ServiceSection() {
             </div>
 
             {/* Services Info */}
-            <div ref={imageWrapperRef} className="w-full h-auto">
+            <div ref={imageWrapperRef} className="w-full h-auto overflow-hidden">
               <div
                 ref={imageRef}
                 className="w-full h-70 md:h-80 lg:h-100 xl:h-120 relative rounded-3xl overflow-hidden"

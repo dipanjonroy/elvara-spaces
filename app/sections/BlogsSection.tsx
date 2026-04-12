@@ -30,7 +30,7 @@ export default function BlogsSection() {
                 name="Explore More Articles"
                 className="bg-(--foreground) text-(--background)"
                 iconClass="bg-(--background) text-(--text-color)"
-                path="#"
+                path="/blogs"
               />
             </EntryBottom>
           </div>

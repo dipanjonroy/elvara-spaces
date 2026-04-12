@@ -9,9 +9,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import MobileMenu from "../navigation/MobileMenu";
 import MainButton from "../ui/MainButton";
+import BookingModal from "./BookingModal";
 
 export default function MobileNavModal() {
-  const { isModalOpen, modalId, closeModal } = useModalStore();
+  const { isModalOpen, modalId, closeModal, openModal } = useModalStore();
 
   const modalRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
@@ -115,7 +116,9 @@ export default function MobileNavModal() {
         <MobileMenu ref={menuRef} closeMenu={handleCloseMenu} />
 
         <div ref={btnRef} className="mt-20">
-          <MainButton onClick={() => console.log("Main button clicked")} />
+          <MainButton onClick={() => {
+            openModal("bookingModal",<BookingModal/>,"center")
+          }} />
         </div>
       </div>
     </div>

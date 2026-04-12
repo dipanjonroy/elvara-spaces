@@ -8,5 +8,5 @@ export const menus: MenuItem[] = [
   {id:2, name: "About", url:"/about-us"},
   {id:3, name: "Projects", url:"/projects"},
   {id:4, name: "Contact", url:"/contact-us"},
-  {id:5, name: "Blog", url:"/"},
+  {id:5, name: "Blog", url:"/blogs"},
 ]

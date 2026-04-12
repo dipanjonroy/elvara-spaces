@@ -93,3 +93,7 @@ body {
   );
   animation: shimmer 1.6s infinite;
 }
+
+.rdp-day {
+  transition: none !important;
+}

@@ -1,4 +1,5 @@
 import { MdKeyboardArrowRight } from "react-icons/md";
+import Spinner from "./Spinner";
 
 interface PrimaryBtnProps {
   name: string;
@@ -6,6 +7,7 @@ interface PrimaryBtnProps {
   iconClass?: string;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  loading?: boolean;
 }
 
 export default function PrimaryButton({
@@ -14,6 +16,7 @@ export default function PrimaryButton({
   iconClass,
   type = "button",
   onClick,
+  loading,
 }: PrimaryBtnProps) {
   return (
     <button
@@ -31,17 +34,23 @@ export default function PrimaryButton({
         </span>
       </span>
 
-      {/* Arrow icon */}
-      <span
-        className={`relative w-6 h-6 rounded-full grid place-items-center overflow-hidden ${iconClass}`}
-      >
-        <span className="absolute transition-all duration-300 ease-in-out group-hover:translate-x-10">
-          <MdKeyboardArrowRight className="text-xl" />
-        </span>
-        <span className="absolute transition-all duration-300 ease-in-out -translate-x-10 group-hover:translate-x-0">
-          <MdKeyboardArrowRight className="text-xl" />
-        </span>
-      </span>
+      {loading ? (
+        <Spinner className="border-t-white" />
+      ) : (
+        <>
+          {/* Arrow icon */}
+          <span
+            className={`relative w-6 h-6 rounded-full grid place-items-center overflow-hidden ${iconClass}`}
+          >
+            <span className="absolute transition-all duration-300 ease-in-out group-hover:translate-x-10">
+              <MdKeyboardArrowRight className="text-xl" />
+            </span>
+            <span className="absolute transition-all duration-300 ease-in-out -translate-x-10 group-hover:translate-x-0">
+              <MdKeyboardArrowRight className="text-xl" />
+            </span>
+          </span>
+        </>
+      )}
     </button>
   );
 }

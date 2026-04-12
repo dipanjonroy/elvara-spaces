@@ -4,8 +4,9 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import ModalLayout from "@/components/modals/ModalLayout";
 import Footer from "@/components/layout/Footer";
-import SmoothWrapper from "@/components/animation/SmoothWrapper";
+import SmoothWrapper from "@/components/provider/SmoothWrapper";
 import ToastContainer from "@/components/toast/ToastContainer";
+import QueryClientWrapper from "@/components/provider/QueryClientWrapper";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -30,14 +31,16 @@ export default function RootLayout({
         className={`${hostGrotesk.variable} antialiased`}
         cz-shortcut-listen="true"
       >
-        <SmoothWrapper>
-          <Header />
-          <main>{children}</main>
+        <QueryClientWrapper>
+          <SmoothWrapper>
+            <Header />
+            <main>{children}</main>
 
-          <Footer />
-        </SmoothWrapper>
-        <ModalLayout />
-        <ToastContainer/>
+            <Footer />
+          </SmoothWrapper>
+          <ModalLayout />
+          <ToastContainer />
+        </QueryClientWrapper>
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import EntryBottom from "@/components/animation/EntryBottom";
+import Link from "next/link";
 
 export default function ProjectSection() {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -90,7 +91,7 @@ export default function ProjectSection() {
             <EntryBottom className="mt-4 flex items-center justify-center">
               <LinkButton
                 name="View all projects"
-                path="#"
+                path="/projects"
                 className="bg-(--foreground) text-(--background)"
                 iconClass="bg-(--background) text-(--text-color)"
               />
@@ -99,8 +100,8 @@ export default function ProjectSection() {
 
           {/* Projects */}
           {projects.map((item) => (
+            <Link key={item.id} href={`/projects/${item.slug}`}>
             <div
-              key={item.id}
               className="project-card w-full lg:w-220 2xl:w-260 h-150 lg:h-120 2xl:h-140 mx-auto relative mt-[50vh] rounded-3xl overflow-hidden"
             >
               <div className="w-full h-full relative">
@@ -124,6 +125,7 @@ export default function ProjectSection() {
                 </div>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
