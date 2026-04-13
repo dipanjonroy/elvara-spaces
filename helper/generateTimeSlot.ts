@@ -1,7 +1,6 @@
 type TimeSlot = {
   key: string;
   value: string;
-  disabled?: boolean;
 };
 
 export const generateTimeSlot = (bookedTimeSlots?: string[]): TimeSlot[] => {
@@ -15,17 +14,19 @@ export const generateTimeSlot = (bookedTimeSlots?: string[]): TimeSlot[] => {
     const slot1 = `${hour}:00`;
     const slot2 = `${hour}:30`;
 
-    times.push({
-      key: `${hour12}:00 ${ampm}`,
-      value: slot1,
-      disabled: bookedTimeSlots?.includes(slot1),
-    });
+    if (!bookedTimeSlots?.includes(slot1)) {
+      times.push({
+        key: `${hour12}:00 ${ampm}`,
+        value: slot1,
+      });
+    }
 
-    times.push({
-      key: `${hour12}:30 ${ampm}`,
-      value: slot2,
-      disabled: bookedTimeSlots?.includes(slot2),
-    });
+    if (!bookedTimeSlots?.includes(slot2)) {
+      times.push({
+        key: `${hour12}:30 ${ampm}`,
+        value: slot2,
+      });
+    }
   }
 
   return times;

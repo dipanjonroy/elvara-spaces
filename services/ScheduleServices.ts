@@ -18,3 +18,23 @@ export async function createSchedule (payload:ScheduleType):Promise<ApiResponse<
 
   return data;
 }
+
+export async function getBookedTimeSlots(date:Date):Promise<ApiResponse<string[]>>{
+  const formattedData = date.toISOString();
+
+  const response = await fetch(`/api/schedule/timeslots/${formattedData}`,{
+    method:"GET",
+    headers:{
+      "Content-type":"application/json"
+    },
+    cache:"no-store"
+  });
+
+  const data = await response.json();
+
+  if(!response.ok){
+    throw new Error(data?.message || "Something went wrong.")
+  }
+
+  return data;
+}

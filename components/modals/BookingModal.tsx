@@ -16,9 +16,11 @@ import { ScheduleResponseType, ScheduleType } from "@/types/ScheduleType";
 import { useCreateSchedule } from "@/query/schedule/useCreateSchedule";
 import { mergeDateAndTime } from "@/helper/mergeDateAndTime";
 import { ApiResponse } from "@/types/ApiResponse";
+import { useGetBookedTimeslot } from "@/query/schedule/useGetBookedTimeslots";
 
 export default function BookingModal() {
   const { mutate, isPending } = useCreateSchedule();
+  
   const modalRef = useRef<HTMLDivElement>(null);
   const { closeModal } = useModalStore();
   const [formData, setFormData] = useState<ScheduleType>({
@@ -29,6 +31,8 @@ export default function BookingModal() {
     date: new Date(),
     time: "",
   });
+
+  const {isPending:slotLoading, data} = useGetBookedTimeslot(formData.date || new Date());
 
   useClickOutside(modalRef, closeModal);
 
@@ -77,7 +81,7 @@ export default function BookingModal() {
 
     mutate(payload, {
       onSuccess: (data: ApiResponse<ScheduleResponseType>) => {
-        toast.success(data?.message);
+        toast.success(data?.message || "New schedule created succesfully.");
         setFormData({
           fname: "",
           lname: "",
@@ -171,7 +175,8 @@ export default function BookingModal() {
                 label="Select Time"
                 required={true}
                 icon={<SlClock />}
-                values={generateTimeSlot()}
+                options={generateTimeSlot(data?.data || [])}
+                value={formData.time}
                 onChange={(time) => setFormData({ ...formData, time: time })}
               />
             </div>
