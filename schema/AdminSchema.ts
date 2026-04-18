@@ -20,3 +20,8 @@ export const AdminSchema = z.object({
     .trim(),
   role: z.string().min(1, "Role is required."),
 });
+
+export const AdminLoginSchema = z.object({
+  user: z.string().min(1, { error: "Username or email is required." }),
+  password: z.string().min(1, { error: "Password is required." }),
+});
