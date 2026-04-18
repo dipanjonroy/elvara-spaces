@@ -1,6 +1,6 @@
 import mongoose, {Schema, model, Document} from "mongoose";
 
-interface Admin extends Document {
+export interface Admin extends Document {
   username:string;
   email:string;
   password:string;
