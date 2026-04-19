@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactHero from "./sections/ContactHero";
-import ContactInfo from "@/app/contact-us/sections/ContactInfo";
+import ContactInfo from "../contact-us/sections/ContactInfo";
 import CTASection from "../sections/CTASection";
 
 export const metadata: Metadata = {

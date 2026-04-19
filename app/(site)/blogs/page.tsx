@@ -1,7 +1,8 @@
-import BlogHero from "@/app/blogs/sections/BlogHero";
-import BlogArticles from "@/app/blogs/sections/BlogArticles";
+
 import type { Metadata } from "next";
 import CTASection from "../sections/CTASection";
+import BlogHeroSection from "./sections/BlogHero";
+import ArticlesSection from "./sections/BlogArticles";
 
 export const metadata:Metadata = {
   title:"Blogs | Elvara Spaces",
@@ -11,8 +12,8 @@ export const metadata:Metadata = {
 export default function page() {
   return (
     <>
-      <BlogHero />
-      <BlogArticles/>
+      <BlogHeroSection />
+      <ArticlesSection/>
       <CTASection/>
     </>
   );

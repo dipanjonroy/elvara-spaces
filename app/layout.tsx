@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import ModalLayout from "@/components/modals/ModalLayout";
+import QueryClientWrapper from "@/components/provider/QueryClientWrapper";
+import ToastContainer from "@/components/toast/ToastContainer";
 import { Host_Grotesk } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import ModalLayout from "@/components/modals/ModalLayout";
-import Footer from "@/components/layout/Footer";
-import SmoothWrapper from "@/components/provider/SmoothWrapper";
-import ToastContainer from "@/components/toast/ToastContainer";
-import QueryClientWrapper from "@/components/provider/QueryClientWrapper";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -14,17 +10,11 @@ const hostGrotesk = Host_Grotesk({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Elvara Spaces | Luxury Residential Interior Design Studio",
-  description:
-    "Elvara Spaces is a modern interior design studio crafting elegant, functional and fully customized residential interiors tailored to your lifestyle.",
-};
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -32,14 +22,9 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <QueryClientWrapper>
-          <SmoothWrapper>
-            <Header />
-            <main>{children}</main>
-
-            <Footer />
-          </SmoothWrapper>
-          <ModalLayout />
+          {children}
           <ToastContainer />
+          <ModalLayout />
         </QueryClientWrapper>
       </body>
     </html>

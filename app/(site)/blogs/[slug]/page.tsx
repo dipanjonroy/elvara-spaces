@@ -2,7 +2,7 @@ import { articlesData } from "@/lib/articles";
 import SingleBlogHero from "./sections/SingleBlogHero";
 import SingleBlogDetails from "./sections/SingleBlogDetails";
 import RelatedBlogs from "./sections/SingleBlogDetails/RelatedBlogs";
-import CTASection from "@/app/sections/CTASection";
+import CTASection from "@/app/(site)/sections/CTASection";
 
 export async function generateMetadata({
   params,
@@ -38,10 +38,10 @@ export default async function page({
 
   return (
     <>
-      <SingleBlogHero data={article}/>
-      <SingleBlogDetails/>
-      <RelatedBlogs/>
-      <CTASection/>
+      <SingleBlogHero data={article} />
+      <SingleBlogDetails />
+      <RelatedBlogs />
+      <CTASection />
     </>
   );
 }
