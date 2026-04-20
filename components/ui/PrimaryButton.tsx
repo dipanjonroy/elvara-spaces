@@ -22,7 +22,7 @@ export default function PrimaryButton({
     <button
       type={type}
       onClick={onClick}
-      className={`${className} inline-flex items-center gap-2 ps-6 pe-3 py-3 rounded-full cursor-pointer overflow-hidden group`}
+      className={`${className} inline-flex justify-center items-center gap-2 ps-6 pe-3 py-3 rounded-full cursor-pointer overflow-hidden group`}
     >
       {/* Text */}
       <span className="relative h-6 overflow-hidden">
