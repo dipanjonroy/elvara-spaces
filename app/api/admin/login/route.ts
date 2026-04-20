@@ -58,28 +58,30 @@ export async function POST(req: NextRequest) {
     }
 
     // Response
-    const response = NextResponse.json({
-      success: true,
-      message: "Logged in successfully.",
-    },{status:201});
+    const response = NextResponse.json(
+      {
+        success: true,
+        message: "Logged in successfully.",
+      },
+      { status: 201 },
+    );
 
     // Create access token
     const accessToken: string = createToken(
       { userId: admin._id, role: admin.role },
       process.env.ACCESS_TOKEN_KEY as string,
-      { expiresIn: "1d" },
+      { expiresIn: body.isRemember ? "7d" : "1d" },
     );
 
-    response.cookies.set("accessToken",accessToken,{
-      httpOnly:true,
+    response.cookies.set("accessToken", accessToken, {
+      httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite:"lax",
-      path:"/",
-      maxAge:60*60*24
+      sameSite: "lax",
+      path: "/",
+      maxAge: body.isRemember ? 60 * 60 * 24 * 7 : 60 * 60 * 24,
     });
 
     return response;
-
   } catch (error) {
     console.log("Failed to login", error);
     return NextResponse.json(
