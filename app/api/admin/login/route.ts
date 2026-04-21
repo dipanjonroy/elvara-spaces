@@ -4,8 +4,11 @@ import { AdminLoginSchema } from "@/schema/AdminSchema";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { createToken } from "@/helper/createToken";
+import { isLoggedOut } from "@/helper/isLoggedout";
 
 export async function POST(req: NextRequest) {
+  const blocked = isLoggedOut(req);
+  if (blocked) return blocked;
   // Parse body
   const body = await req.json();
 
