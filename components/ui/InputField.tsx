@@ -3,11 +3,12 @@
 type InputFieldProps = {
   label?: string;
   name: string;
-  type?: string;
+  type?: "text" | "password" | "email" | "number";
   value?:string;
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
+  autoComplete?:string;
 };
 
 export default function InputField({
@@ -18,6 +19,7 @@ export default function InputField({
   placeholder,
   onChange,
   required=false,
+  autoComplete
 }: InputFieldProps) {
   return (
     <div className="flex flex-col gap-2">
@@ -34,6 +36,7 @@ export default function InputField({
         placeholder={placeholder}
         onChange={onChange}
         className="w-full border border-(--black-border) text-sm px-4 h-10 rounded-md focus:outline-none"
+        autoComplete={autoComplete}
       />
     </div>
   );

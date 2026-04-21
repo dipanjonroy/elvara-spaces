@@ -84,6 +84,7 @@ export default function LoginForm() {
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
             }
+            autoComplete="current-password"
           />
 
           <button
