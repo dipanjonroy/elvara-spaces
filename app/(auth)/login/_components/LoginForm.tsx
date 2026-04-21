@@ -4,6 +4,8 @@ import { toast } from "@/components/toast/Toast";
 import InputField from "@/components/ui/InputField";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { isEmpty } from "@/helper/ValidateForm";
+import { useLogin } from "@/query/auth/useLogin";
+import { ApiResponse } from "@/types/ApiResponse";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -26,6 +28,8 @@ export default function LoginForm() {
     isRemember: false,
   });
 
+  const { mutate, isPending } = useLogin();
+
   // Handle form submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,7 +44,20 @@ export default function LoginForm() {
       return;
     }
 
-    console.log(formData)
+    // Login Query performed
+    mutate(formData, {
+      onSuccess: (data: ApiResponse) => {
+        toast.success(data?.message || "Logged in successfully");
+        setFormData({
+          user: "",
+          password: "",
+          isRemember: false,
+        });
+      },
+      onError: (error: Error) => {
+        toast.error(error?.message || "Login failed!");
+      },
+    });
   };
 
   return (
@@ -109,6 +126,7 @@ export default function LoginForm() {
         className="bg-(--foreground) text-(--background) w-full"
         iconClass="bg-(--background) text-(--foreground)"
         type="submit"
+        loading={isPending}
       />
     </form>
   );
