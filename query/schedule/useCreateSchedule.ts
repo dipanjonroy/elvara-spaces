@@ -9,7 +9,7 @@ export function useCreateSchedule (){
   const mutation = useMutation<ApiResponse<ScheduleResponseType>,Error,ScheduleType>({
     mutationFn: createSchedule,
     onSuccess:()=>{
-      queryClient.invalidateQueries({queryKey: ["Schedules"]})
+      queryClient.invalidateQueries({queryKey: ["bookedTimeslots"]})
     },
     onError:(error:Error)=>{
       console.error(error.message)
