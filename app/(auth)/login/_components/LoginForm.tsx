@@ -7,6 +7,7 @@ import { isEmpty } from "@/helper/ValidateForm";
 import { useLogin } from "@/query/auth/useLogin";
 import { ApiResponse } from "@/types/ApiResponse";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { FaCheck } from "react-icons/fa6";
@@ -29,6 +30,7 @@ export default function LoginForm() {
   });
 
   const { mutate, isPending } = useLogin();
+  const router = useRouter();
 
   // Handle form submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -53,6 +55,7 @@ export default function LoginForm() {
           password: "",
           isRemember: false,
         });
+        router.push("/dashboard")
       },
       onError: (error: Error) => {
         toast.error(error?.message || "Login failed!");

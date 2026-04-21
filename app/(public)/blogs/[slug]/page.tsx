@@ -2,7 +2,7 @@ import { articlesData } from "@/lib/articles";
 import SingleBlogHero from "./sections/SingleBlogHero";
 import SingleBlogDetails from "./sections/SingleBlogDetails";
 import RelatedBlogs from "./sections/SingleBlogDetails/RelatedBlogs";
-import CTASection from "@/app/(site)/sections/CTASection";
+import CTASection from "@/app/(public)/sections/CTASection";
 
 export async function generateMetadata({
   params,

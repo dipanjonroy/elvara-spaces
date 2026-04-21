@@ -1,7 +1,7 @@
 import { projects } from "@/lib/projects";
 import SingleProjectHeroSection from "./sections/SingleProjectHeroSection";
 import ProjectDescriptionSection from "./sections/ProjectDescriptionSection";
-import CTASection from "@/app/(site)/sections/CTASection";
+import CTASection from "@/app/(public)/sections/CTASection";
 import SingleProjectSkeleton from "@/components/skeletons/SingleProjectSkeleton";
 
 export async function generateMetadata({
