@@ -1,39 +1,42 @@
 import { ApiResponse } from "@/types/ApiResponse";
-import { ScheduleResponseType, ScheduleType } from "@/types/ScheduleType";
+import { ScheduleType } from "@/types/ScheduleType";
 
-export async function createSchedule (payload:ScheduleType):Promise<ApiResponse<ScheduleResponseType>>{
-  const response = await fetch("/api/schedule",{
+export async function createSchedule(
+  payload: ScheduleType,
+): Promise<ApiResponse> {
+  const response = await fetch("/api/schedule", {
     method: "POST",
-    headers:{
-      "Content-Type":"application/json"
+    headers: {
+      "Content-Type": "application/json",
     },
-    body:JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
 
   const data = await response.json();
 
-  if(!response.ok){
-    throw new Error(data?.message || "Something went wrong.")
+  if (!response.ok) {
+    throw new Error(data?.message || "Something went wrong.");
   }
 
   return data;
 }
 
-export async function getBookedTimeSlots(date:Date):Promise<ApiResponse<string[]>>{
-  const formattedData = date.toISOString();
+export async function getBookedTimeSlots(
+  date: Date,
+): Promise<ApiResponse<string[]>> {
+  const formattedData = date.toLocaleDateString("en-CA");
 
-  const response = await fetch(`/api/schedule/timeslots/${formattedData}`,{
-    method:"GET",
-    headers:{
-      "Content-type":"application/json"
+  const response = await fetch(`/api/schedule/timeslots/${formattedData}`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
     },
-    cache:"no-store"
   });
 
   const data = await response.json();
 
-  if(!response.ok){
-    throw new Error(data?.message || "Something went wrong.")
+  if (!response.ok) {
+    throw new Error(data?.message || "Something went wrong.");
   }
 
   return data;

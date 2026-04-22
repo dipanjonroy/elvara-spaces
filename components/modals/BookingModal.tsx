@@ -20,7 +20,7 @@ import { useGetBookedTimeslot } from "@/query/schedule/useGetBookedTimeslots";
 
 export default function BookingModal() {
   const { mutate, isPending } = useCreateSchedule();
-  
+
   const modalRef = useRef<HTMLDivElement>(null);
   const { closeModal } = useModalStore();
   const [formData, setFormData] = useState<ScheduleType>({
@@ -32,7 +32,9 @@ export default function BookingModal() {
     time: "",
   });
 
-  const {isPending:slotLoading, data} = useGetBookedTimeslot(formData.date || new Date());
+  const { isPending: slotLoading, data } = useGetBookedTimeslot(
+    formData.date || new Date(),
+  );
 
   useClickOutside(modalRef, closeModal);
 
@@ -80,15 +82,18 @@ export default function BookingModal() {
     };
 
     mutate(payload, {
-      onSuccess: (data: ApiResponse<ScheduleResponseType>) => {
+      onSuccess: (data: ApiResponse) => {
         toast.success(data?.message || "New schedule created succesfully.");
-        setFormData({
-          fname: "",
-          lname: "",
-          email: "",
-          phone: "",
-          date: new Date(),
-          time: "",
+
+        setFormData((prev) => {
+          return {
+            ...prev,
+            fname: "",
+            lname: "",
+            email: "",
+            phone: "",
+            time: "",
+          };
         });
       },
       onError: (error: Error) => {
@@ -97,7 +102,6 @@ export default function BookingModal() {
     });
   };
 
-  
   return (
     <div
       ref={modalRef}
@@ -188,8 +192,6 @@ export default function BookingModal() {
               iconClass="bg-(--background) text-(--foreground)"
               loading={isPending}
             />
-
-            
           </div>
         </form>
       </div>

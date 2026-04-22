@@ -3,7 +3,7 @@ import { ApiResponse } from "@/types/ApiResponse";
 import { useQuery } from "@tanstack/react-query";
 
 export function useGetBookedTimeslot(date: Date) {
-  const formattedDate = date.toISOString().split("T")[0];
+  const formattedDate = date.toLocaleDateString("en-CA");
 
   return useQuery<ApiResponse<string[] | []>, Error>({
     queryKey: ["bookedTimeslots", formattedDate],
