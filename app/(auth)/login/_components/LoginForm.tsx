@@ -120,7 +120,7 @@ export default function LoginForm() {
           <span>Remember me</span>
         </label>
 
-        <Link href="#" className="inline-block hover:underline text-sm">
+        <Link href="/forget-password" className="inline-block hover:underline text-sm">
           Forgot your password?
         </Link>
       </div>
