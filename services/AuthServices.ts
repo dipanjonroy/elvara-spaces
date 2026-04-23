@@ -2,7 +2,7 @@ import { LoginTypes } from "@/types/LoginTypes";
 
 // Admin login
 export async function login(payload: LoginTypes) {
-  const response = await fetch("/api/admin/login", {
+  const response = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
