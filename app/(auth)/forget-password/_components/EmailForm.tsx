@@ -11,7 +11,7 @@ import { useState } from "react";
 export default function EmailForm() {
   const [email, setEmail] = useState<string>("");
 
-  const { mutate, isPending, isError, error } = useForgetPassword();
+  const { mutate, isPending,} = useForgetPassword();
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
