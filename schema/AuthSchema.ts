@@ -24,5 +24,7 @@ export const AdminSchema = z.object({
 export const AdminLoginSchema = z.object({
   user: z.string().min(1, { error: "Username or email is required." }),
   password: z.string().min(1, { error: "Password is required." }),
-  isRemember:z.boolean({error:"Is Remember is required."})
+  isRemember: z.boolean({ error: "Is Remember is required." }),
 });
+
+export const EmailSchema = z.email({ error: "Email is invalid" });

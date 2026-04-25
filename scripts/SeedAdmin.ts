@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import AdminModel, { Admin } from "@/models/AdminModel";
-import { AdminSchema } from "@/schema/AdminSchema";
+import { AdminSchema } from "@/schema/AuthSchema";
 import "dotenv/config";
 import bcrypt from "bcryptjs";
 
@@ -38,7 +38,7 @@ const SeedAdmin = async () => {
 
     const hashedPassword = await bcrypt.hash(adminDetails.password, 10);
 
-    await AdminModel.create({...adminDetails,password:hashedPassword});
+    await AdminModel.create({ ...adminDetails, password: hashedPassword });
 
     console.log("New admin seeding completed.");
   } catch (error) {

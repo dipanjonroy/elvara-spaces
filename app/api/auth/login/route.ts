@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import AdminModel, { Admin } from "@/models/AdminModel";
-import { AdminLoginSchema } from "@/schema/AdminSchema";
+import { AdminLoginSchema } from "@/schema/AuthSchema";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { createToken } from "@/helper/createToken";
