@@ -6,17 +6,18 @@ import { EmailSchema } from "@/schema/AuthSchema";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const searchParams = req.nextUrl.searchParams;
-
-  const email = searchParams.get("email");
+  const { email } = await req.json();
 
   // Validate email
   const result = EmailSchema.safeParse(email);
   if (!result.success) {
-    return NextResponse.json({
-      success: false,
-      message: result.error.issues[0].message,
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        message: result.error.issues[0].message,
+      },
+      { status: 400 },
+    );
   }
 
   try {
@@ -25,10 +26,13 @@ export async function POST(req: NextRequest) {
     // Checking existing user
     const user = await AdminModel.findOne({ email });
     if (!user) {
-      return NextResponse.json({
-        success: false,
-        message: "User not found",
-      });
+      return NextResponse.json(
+        {
+          success: false,
+          message: "User not found",
+        },
+        { status: 404 },
+      );
     }
 
     const verificationToken = createToken(
@@ -39,7 +43,7 @@ export async function POST(req: NextRequest) {
     const verificationLink = `${process.env.NEXT_PUBLIC_BASE_URL}/verify-email?token=${verificationToken}`;
 
     const sendEmailResult = await emailSender(
-      "dipanjon95@gmail.com",
+      user.email,
       "Verification",
       verificationLink,
     );
@@ -48,7 +52,10 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(sendEmailResult, { status: 201 });
-  } catch (error) {
-    console.log(error);
+  } catch {
+    return NextResponse.json({
+      success: false,
+      message: "Failed to send email",
+    });
   }
 }
