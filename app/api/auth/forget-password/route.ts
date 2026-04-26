@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       process.env.VERIFY_EMAIL_KEY as string,
       { expiresIn: "30m" },
     );
-    const verificationLink = `${process.env.NEXT_PUBLIC_BASE_URL}/verify-email?token=${verificationToken}`;
+    const verificationLink = `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password?token=${verificationToken}`;
 
     const html = `
 <!DOCTYPE html>
