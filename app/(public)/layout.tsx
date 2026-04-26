@@ -1,7 +1,7 @@
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SmoothWrapper from "@/components/provider/SmoothWrapper";
 import type { Metadata } from "next";
-import { Footer } from "react-day-picker";
 
 
 
