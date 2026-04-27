@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 import dbConnect from "@/lib/dbConnect";
 import AdminModel from "@/models/AdminModel";
+import { isLoggedOut } from "@/helper/isLoggedout";
 
 interface TokenPayload extends jwt.JwtPayload {
   userId: string;
@@ -12,6 +13,9 @@ export async function GET(
   { params }: { params: Promise<{ token: string }> },
 ) {
   try {
+    // Checked user logged out
+    await isLoggedOut(req);
+
     const { token } = await params;
 
     if (!token) {
